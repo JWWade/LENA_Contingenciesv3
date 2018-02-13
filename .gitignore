@@ -1,6 +1,7 @@
 *.pyc
 test.py
 .vscode/
+.idea/
 .DS_Store
 e20160621_141743_009276.its
 e20130703_124459_008311.its
