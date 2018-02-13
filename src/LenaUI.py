@@ -786,9 +786,9 @@ class LenaUI:
         instruction_var += "\tA--->B  or  (A---> B)---> C: type of analysis performed\n"
         instruction_var += "\tA, B, C:  Drop down menus to select desired variables\n\n"
         instruction_var += "8) PAUSE DURATION:  Use entry field, slider bar, and/or buttons to choose pause duration\n"
-        instruction_var += "\tEntry field:  enter in specific pause duration\n"
+        instruction_var += "\tEntry field:  enter in specific pause duration in seconds and tenths of seconds\n"
         instruction_var += "\tSlider bar:  Click and hold to move along bar\n"
-        instruction_var += "\tButtons(<,>):  Moves slider bar by .1 in specified direction\n\n"
-        instruction_var += "9) ENABLE ROUNDING:  Select to enable rouding\n"
+        instruction_var += "\tButtons(<,>):  Moves slider bar by 0.1 seconds in specified direction\n\n"
+        instruction_var += "9) ENABLE ROUNDING:  Select to enable rounding to nearest integer with tie-breaking threshold of 0.5 seconds\n"
         instruction_var += "10) SUBMIT:  Submits the current data in fields to the program to start analysis\n"
         return instruction_var
