@@ -172,18 +172,12 @@ class EItemList:
 		tok_d = float(self.contingencies["d"])
 
 		# checking for divide by zero
-		possibleZero1 = (tok_a + tok_b)
-		possibleZero2 = (tok_c + tok_d)
-
-		if possibleZero1 is 0:
-			print "zero1"
-
-		if possibleZero2 is 0:
-			print "zero2"
-
-
-		# OCV operant contingency value
-		OCV = (tok_a / (tok_a + tok_b)) - (tok_c / (tok_c + tok_d))
+		if tok_a + tok_b is 0 or tok_c + tok_d is 0:
+			OCV = "undefined"
+		else:
+			# OCV operant contingency value
+			OCV = (tok_a / (tok_a + tok_b)) - (tok_c / (tok_c + tok_d))
+		
 
 		rt += str(self.contingencies["a"]) + ',' + str(self.contingencies["b"]) + ',' + str(self.contingencies["c"]) + ',' + str(self.contingencies["d"]) + ',' + str(OCV)
 		return rt
