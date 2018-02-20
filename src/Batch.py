@@ -36,5 +36,5 @@ class Batch:
 					self.items[subID] = []
 				self.items[subID].append(fullpath)
 
-			if ".csv" in f:
+			#if ".csv" in f:
 				## Currently in development
