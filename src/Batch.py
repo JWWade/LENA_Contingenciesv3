@@ -1,6 +1,6 @@
 """
 The MIT License (MIT)
-Copyright (c) 2017 Paul Yoder, Joshua Wade, Kenneth Bailey, Mena Sargios, Joseph Hull, Loraina Lampley
+Copyright (c) 2018 Paul Yoder, Joshua Wade, Kenneth Bailey, Mena Sargios, Joseph Hull, Loraina Lampley, John Peden, Bishoy Boktor, Kate Lovett, Joel Norris, Joseph London, Jesse Offei-nkansah
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
@@ -35,3 +35,6 @@ class Batch:
 				if subID not in self.items:
 					self.items[subID] = []
 				self.items[subID].append(fullpath)
+
+			if ".csv" in f:
+				## Currently in development
