@@ -1,7 +1,7 @@
 (['/Users/Home/Documents/kol-ij/_Spring_18/CSCI_4700/LENA_Contingenciesv3/src/control.py'],
  ['/Users/Home/Documents/kol-ij/_Spring_18/CSCI_4700/LENA_Contingenciesv3/src',
   '/Library/Python/2.7/site-packages',
-  '/Users/Home/Documents/kol-ij/_Spring_18/CSCI_4700/LENA_Contingenciesv3/PyInstaller'],
+  '/Users/Home/Documents/kol-ij/_Spring_18/CSCI_4700/LENA_Contingenciesv3/buildScript'],
  ['codecs'],
  [],
  [],

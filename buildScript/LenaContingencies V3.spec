@@ -4,7 +4,7 @@ block_cipher = None
 
 
 a = Analysis(['../src/control.py'],
-             pathex=['/Library/Python/2.7/site-packages', '/Users/Home/Documents/kol-ij/_Spring_18/CSCI_4700/LENA_Contingenciesv3/PyInstaller'],
+             pathex=['/Library/Python/2.7/site-packages', '/Users/Home/Documents/kol-ij/_Spring_18/CSCI_4700/LENA_Contingenciesv3/buildScript'],
              binaries=[],
              datas=[],
              hiddenimports=[],
