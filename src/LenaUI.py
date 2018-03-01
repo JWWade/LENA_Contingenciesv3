@@ -26,7 +26,7 @@ WINDOWS = 'Windows'
 AB = 'A_B'
 ABC = 'AB_C'
 OK = 'ok'
-MAXTHREADS = 4
+MAXTHREADS = 1
 codes = ('MAN','MAF','FAN','FAF','CHNSP','CHNNSP', \
 			'CHF','CXN','CXF','NON','NOF','OLN','OLF','TVN', \
 			'TVF','SIL')
@@ -60,7 +60,7 @@ class LenaUI:
         self.output_msg = ""
         self.output_msg_counter = 0
         self.num_threads = IntVar()
-        self.num_threads.set(4)
+        self.num_threads.set(1)
         self.start_time = None
         self.seq_run_results = []
 
@@ -107,8 +107,8 @@ class LenaUI:
         # create widgets
         top_frame = Frame(t, width=100, height=50)
         t.wm_title("Set Threads")
-        l = Label(t, text="Set number of threads to use\nwhen performing analysis: \n(default=4)")
-        s = Spinbox(t, from_=4, to=50, textvariable=self.num_threads, width=4)
+        l = Label(t, text="Set number of threads to use\nwhen performing analysis: \n(default=1)")
+        s = Spinbox(t, from_=1, to=50, textvariable=self.num_threads, width=4)
         b = ttk.Button(t, text="close", command=lambda: t.destroy(), width=4)
 
         # arrange widgets
