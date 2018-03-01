@@ -284,6 +284,7 @@ class LenaUI:
 
     def get_its_files(self):
         "This method looks creates a dict of all .its files found in the input directory"
+        # ************************************
         tempDict = Batch(self.input_dir.get())
         for i in range(len(tempDict.items)):
             tempItem = tempDict.items.popitem()
@@ -432,6 +433,7 @@ class LenaUI:
         self.btm_submit_btn.configure(text="Cancel", command=self.kill_threads)
 
         # create object to send to analysis
+        # **********************************
         data = SeqData(self.its_file_dict, self.seq_config, self.num_threads.get(), self.output_format)
         self.seq_run_results = []
 
