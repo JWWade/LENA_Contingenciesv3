@@ -284,6 +284,7 @@ class LenaUI:
 
     def get_its_files(self):
         "This method looks creates a dict of all .its files found in the input directory"
+        # ************************************
         tempDict = Batch(self.input_dir.get())
         for i in range(len(tempDict.items)):
             tempItem = tempDict.items.popitem()
@@ -432,6 +433,7 @@ class LenaUI:
         self.btm_submit_btn.configure(text="Cancel", command=self.kill_threads)
 
         # create object to send to analysis
+        # **********************************
         data = SeqData(self.its_file_dict, self.seq_config, self.num_threads.get(), self.output_format)
         self.seq_run_results = []
 
@@ -786,9 +788,9 @@ class LenaUI:
         instruction_var += "\tA--->B  or  (A---> B)---> C: type of analysis performed\n"
         instruction_var += "\tA, B, C:  Drop down menus to select desired variables\n\n"
         instruction_var += "8) PAUSE DURATION:  Use entry field, slider bar, and/or buttons to choose pause duration\n"
-        instruction_var += "\tEntry field:  enter in specific pause duration\n"
+        instruction_var += "\tEntry field:  enter in specific pause duration in seconds and tenths of seconds\n"
         instruction_var += "\tSlider bar:  Click and hold to move along bar\n"
-        instruction_var += "\tButtons(<,>):  Moves slider bar by .1 in specified direction\n\n"
-        instruction_var += "9) ENABLE ROUNDING:  Select to enable rouding\n"
+        instruction_var += "\tButtons(<,>):  Moves slider bar by 0.1 seconds in specified direction\n\n"
+        instruction_var += "9) ENABLE ROUNDING:  Select to enable rounding to nearest integer with tie-breaking threshold of 0.5 seconds\n"
         instruction_var += "10) SUBMIT:  Submits the current data in fields to the program to start analysis\n"
         return instruction_var
