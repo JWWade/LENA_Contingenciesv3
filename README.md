@@ -1,4 +1,4 @@
-# LENA_Contingencies v3
+# LENA_Contingencies v3!
 
 GUI for computing contingency tables from .its and .csv files.
 
