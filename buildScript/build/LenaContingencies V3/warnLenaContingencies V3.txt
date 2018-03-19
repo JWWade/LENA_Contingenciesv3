@@ -1,30 +1,25 @@
-missing module named org - imported by copy
-missing module named _sha512 - imported by hashlib
-missing module named _sha256 - imported by hashlib
-missing module named _md5 - imported by hashlib
-missing module named _sha - imported by hashlib
-missing module named 'org.python' - imported by pickle, xml.sax
-missing module named _subprocess - imported by subprocess
-missing module named msvcrt - imported by subprocess, getpass
-missing module named riscosenviron - imported by os
-missing module named riscospath - imported by os
-missing module named riscos - imported by os
-missing module named ce - imported by os
-missing module named _emx_link - imported by os
-missing module named os2 - imported by os
-missing module named nt - imported by os, ntpath
-missing module named vms_lib - imported by platform
-missing module named 'java.lang' - imported by platform, xml.sax._exceptions
-missing module named java - imported by platform
-missing module named SOCKS - imported by ftplib
-missing module named rourl2path - imported by urllib
-missing module named _xmlplus - imported by xml
-missing module named OverrideFrom23 - imported by Carbon.Res
-missing module named _winreg - imported by winreg, platform, mimetypes, urllib
-missing module named winreg.HKEY_LOCAL_MACHINE - imported by winreg, platform
-missing module named winreg.CloseKey - imported by winreg, platform
-missing module named winreg.QueryValueEx - imported by winreg, platform
-missing module named winreg.OpenKeyEx - imported by winreg, platform
-missing module named win32pipe - imported by platform
-missing module named _dummy_threading - imported by dummy_threading
-missing module named ElementC14N - imported by xml.etree.ElementTree
+excluded module named _frozen_importlib - imported by importlib, importlib.abc, /Users/Home/Documents/kol-ij/_Spring_18/CSCI_4700/LENA_Contingenciesv3/src/control.py
+missing module named _frozen_importlib_external - imported by importlib._bootstrap, importlib, importlib.abc, /Users/Home/Documents/kol-ij/_Spring_18/CSCI_4700/LENA_Contingenciesv3/src/control.py
+missing module named java - imported by platform, /Users/Home/Documents/kol-ij/_Spring_18/CSCI_4700/LENA_Contingenciesv3/src/control.py
+missing module named 'java.lang' - imported by platform, /Users/Home/Documents/kol-ij/_Spring_18/CSCI_4700/LENA_Contingenciesv3/src/control.py, xml.sax._exceptions
+missing module named vms_lib - imported by platform, /Users/Home/Documents/kol-ij/_Spring_18/CSCI_4700/LENA_Contingenciesv3/src/control.py
+missing module named msvcrt - imported by subprocess, /Users/Home/Documents/kol-ij/_Spring_18/CSCI_4700/LENA_Contingenciesv3/src/control.py, getpass
+missing module named _winapi - imported by subprocess, /Users/Home/Documents/kol-ij/_Spring_18/CSCI_4700/LENA_Contingenciesv3/src/control.py
+missing module named _winreg - imported by winreg, platform, /Users/Home/Documents/kol-ij/_Spring_18/CSCI_4700/LENA_Contingenciesv3/src/control.py
+missing module named winreg.OpenKeyEx - imported by winreg, platform, /Users/Home/Documents/kol-ij/_Spring_18/CSCI_4700/LENA_Contingenciesv3/src/control.py
+missing module named winreg.QueryValueEx - imported by winreg, platform, /Users/Home/Documents/kol-ij/_Spring_18/CSCI_4700/LENA_Contingenciesv3/src/control.py
+missing module named winreg.CloseKey - imported by winreg, platform, /Users/Home/Documents/kol-ij/_Spring_18/CSCI_4700/LENA_Contingenciesv3/src/control.py
+missing module named winreg.HKEY_LOCAL_MACHINE - imported by winreg, platform, /Users/Home/Documents/kol-ij/_Spring_18/CSCI_4700/LENA_Contingenciesv3/src/control.py
+missing module named _dummy_threading - imported by dummy_threading, /Users/Home/Documents/kol-ij/_Spring_18/CSCI_4700/LENA_Contingenciesv3/src/control.py
+missing module named nt - imported by os, ntpath, shutil, /Users/Home/Documents/kol-ij/_Spring_18/CSCI_4700/LENA_Contingenciesv3/src/control.py
+missing module named 'org.python' - imported by copy, /Users/Home/Documents/kol-ij/_Spring_18/CSCI_4700/LENA_Contingenciesv3/src/control.py, xml.sax
+missing module named org - imported by pickle, /Users/Home/Documents/kol-ij/_Spring_18/CSCI_4700/LENA_Contingenciesv3/src/control.py
+missing module named cPickle - imported by xlsxwriter.compat_collections
+missing module named cStringIO - imported by cPickle
+missing module named copy_reg - imported by cPickle, cStringIO
+missing module named StringIO - imported by xlsxwriter.compatibility
+missing module named tkMessageBox - imported by LenaUI
+invalid module named SeqAnalysis2 - imported by LenaUI
+missing module named tkFileDialog - imported by LenaUI
+missing module named ttk - imported by LenaUI
+missing module named Tkinter - imported by /Users/Home/Documents/kol-ij/_Spring_18/CSCI_4700/LENA_Contingenciesv3/src/control.py, tkinter, LenaUI
