@@ -3,20 +3,41 @@
   <component name="ChangeListManager">
     <list default="true" id="746f4d8d-5e51-4e8e-9101-2da07322663d" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/buildScript/build/LenaContingencies V3/out00-Analysis.toc" afterPath="$PROJECT_DIR$/buildScript/build/LenaContingencies V3/out00-Analysis.toc" />
-      <change beforePath="$PROJECT_DIR$/buildScript/build/LenaContingencies V3/out00-EXE.toc" afterPath="$PROJECT_DIR$/buildScript/build/LenaContingencies V3/out00-EXE.toc" />
-      <change beforePath="$PROJECT_DIR$/buildScript/build/LenaContingencies V3/out00-PKG.pkg" afterPath="$PROJECT_DIR$/buildScript/build/LenaContingencies V3/out00-PKG.pkg" />
-      <change beforePath="$PROJECT_DIR$/buildScript/build/LenaContingencies V3/out00-PKG.toc" afterPath="$PROJECT_DIR$/buildScript/build/LenaContingencies V3/out00-PKG.toc" />
-      <change beforePath="$PROJECT_DIR$/buildScript/build/LenaContingencies V3/out00-PYZ.pyz" afterPath="$PROJECT_DIR$/buildScript/build/LenaContingencies V3/out00-PYZ.pyz" />
-      <change beforePath="$PROJECT_DIR$/buildScript/build/LenaContingencies V3/out00-PYZ.toc" afterPath="$PROJECT_DIR$/buildScript/build/LenaContingencies V3/out00-PYZ.toc" />
-      <change beforePath="$PROJECT_DIR$/buildScript/build/LenaContingencies V3/out00-Tree.toc" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/buildScript/build/LenaContingencies V3/out01-Tree.toc" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/buildScript/build/LenaContingencies V3/warnLenaContingencies V3.txt" afterPath="$PROJECT_DIR$/buildScript/build/LenaContingencies V3/warnLenaContingencies V3.txt" />
-      <change beforePath="$PROJECT_DIR$/buildScript/build/LenaContingencies V3/xref-LenaContingencies V3.html" afterPath="$PROJECT_DIR$/buildScript/build/LenaContingencies V3/xref-LenaContingencies V3.html" />
-      <change beforePath="$PROJECT_DIR$/builds/v3/LenaContingencies V3" afterPath="$PROJECT_DIR$/builds/v3/LenaContingencies V3" />
-      <change beforePath="$PROJECT_DIR$/builds/v3/LenaContingencies V3.app/Contents/Info.plist" afterPath="$PROJECT_DIR$/builds/v3/LenaContingencies V3.app/Contents/Info.plist" />
-      <change beforePath="$PROJECT_DIR$/builds/v3/LenaContingencies V3.app/Contents/MacOS/LenaContingencies V3" afterPath="$PROJECT_DIR$/builds/v3/LenaContingencies V3.app/Contents/MacOS/LenaContingencies V3" />
-      <change beforePath="$PROJECT_DIR$/src/LenaUI.py" afterPath="$PROJECT_DIR$/src/LenaUI.py" />
+      <change beforePath="$PROJECT_DIR$/buildScript/LenaContingencies V3.spec" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/buildScript/LenaContingenciesV3.spec" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/buildScript/build/LenaContingencies V3/base_library.zip" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/buildScript/build/LenaContingencies V3/out00-Analysis.toc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/buildScript/build/LenaContingencies V3/out00-BUNDLE.toc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/buildScript/build/LenaContingencies V3/out00-EXE.toc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/buildScript/build/LenaContingencies V3/out00-PKG.pkg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/buildScript/build/LenaContingencies V3/out00-PKG.toc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/buildScript/build/LenaContingencies V3/out00-PYZ.pyz" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/buildScript/build/LenaContingencies V3/out00-PYZ.toc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/buildScript/build/LenaContingencies V3/warnLenaContingencies V3.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/buildScript/build/LenaContingencies V3/xref-LenaContingencies V3.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/buildScript/build/LenaContingenciesV3/base_library.zip" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/buildScript/build/LenaContingenciesV3/out00-Analysis.toc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/buildScript/build/LenaContingenciesV3/out00-BUNDLE.toc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/buildScript/build/LenaContingenciesV3/out00-EXE.toc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/buildScript/build/LenaContingenciesV3/out00-PKG.pkg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/buildScript/build/LenaContingenciesV3/out00-PKG.toc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/buildScript/build/LenaContingenciesV3/out00-PYZ.pyz" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/buildScript/build/LenaContingenciesV3/out00-PYZ.toc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/buildScript/build/LenaContingenciesV3/warnLenaContingenciesV3.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/buildScript/build/LenaContingenciesV3/xref-LenaContingenciesV3.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/buildScript/build_MacUnix.py" afterPath="$PROJECT_DIR$/buildScript/build_MacUnix.py" />
+      <change beforePath="$PROJECT_DIR$/builds/v3/LenaContingencies V3" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/builds/v3/LenaContingencies V3.app/Contents/Info.plist" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/builds/v3/LenaContingencies V3.app/Contents/MacOS/LenaContingencies V3" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/builds/v3/LenaContingencies V3.app/Contents/Resources/LENACon3-Icon.icns" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/builds/v3/LenaContingenciesV3" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/builds/v3/LenaContingenciesV3 2.app/Contents/Info.plist" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/builds/v3/LenaContingenciesV3 2.app/Contents/MacOS/LenaContingenciesV3" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/builds/v3/LenaContingenciesV3 2.app/Contents/Resources/LENACon3-Icon.icns" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/builds/v3/LenaContingenciesV3.app/Contents/Info.plist" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/builds/v3/LenaContingenciesV3.app/Contents/MacOS/LenaContingenciesV3" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/builds/v3/LenaContingenciesV3.app/Contents/Resources/LENACon3-Icon.icns" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/SeqAnalysis2.py" afterPath="$PROJECT_DIR$/src/SeqAnalysis2.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -26,32 +47,34 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="LenaUI.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/LenaUI.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2946">
+            <state relative-caret-position="9525">
               <caret line="645" column="20" lean-forward="false" selection-start-line="645" selection-start-column="17" selection-end-line="645" selection-end-column="20" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="build_MacUnix.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="build_MacUnix.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/buildScript/build_MacUnix.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="15" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="225">
+              <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#27#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SeqAnalysis2.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="SeqAnalysis2.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/SeqAnalysis2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1622">
-              <caret line="148" column="45" lean-forward="false" selection-start-line="148" selection-start-column="45" selection-end-line="148" selection-end-column="45" />
+            <state relative-caret-position="528">
+              <caret line="161" column="20" lean-forward="false" selection-start-line="161" selection-start-column="20" selection-end-line="161" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -65,6 +88,26 @@
               <folding>
                 <element signature="e#1224#1244#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Batch.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Batch.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="345">
+              <caret line="25" column="37" lean-forward="false" selection-start-line="25" selection-start-column="37" selection-end-line="25" selection-end-column="37" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Helpers.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Helpers.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="15">
+              <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="17" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -90,8 +133,9 @@
       <list>
         <option value="$PROJECT_DIR$/src/Batch.py" />
         <option value="$PROJECT_DIR$/src/control.py" />
-        <option value="$PROJECT_DIR$/src/SeqAnalysis2.py" />
         <option value="$PROJECT_DIR$/src/LenaUI.py" />
+        <option value="$PROJECT_DIR$/buildScript/build_MacUnix.py" />
+        <option value="$PROJECT_DIR$/src/SeqAnalysis2.py" />
       </list>
     </option>
   </component>
@@ -121,8 +165,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -134,27 +176,6 @@
               <item name="LENA_Contingenciesv3" type="b2602c69:ProjectViewProjectNode" />
               <item name="LENA_Contingenciesv3" type="462c0819:PsiDirectoryNode" />
               <item name="builds" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LENA_Contingenciesv3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LENA_Contingenciesv3" type="462c0819:PsiDirectoryNode" />
-              <item name="builds" type="462c0819:PsiDirectoryNode" />
-              <item name="v3" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LENA_Contingenciesv3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LENA_Contingenciesv3" type="462c0819:PsiDirectoryNode" />
-              <item name="builds" type="462c0819:PsiDirectoryNode" />
-              <item name="v3" type="462c0819:PsiDirectoryNode" />
-              <item name="LenaContingencies V3.app" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LENA_Contingenciesv3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LENA_Contingenciesv3" type="462c0819:PsiDirectoryNode" />
-              <item name="builds" type="462c0819:PsiDirectoryNode" />
-              <item name="v3" type="462c0819:PsiDirectoryNode" />
-              <item name="LenaContingencies V3.app" type="462c0819:PsiDirectoryNode" />
-              <item name="Contents" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="LENA_Contingenciesv3" type="b2602c69:ProjectViewProjectNode" />
@@ -180,6 +201,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -216,6 +239,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -223,7 +247,7 @@
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24959612" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.196875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -231,25 +255,12 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19709209" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -307,9 +318,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#10#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -358,9 +367,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#10#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -409,9 +416,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#10#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -460,9 +465,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#10#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -512,9 +515,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#10#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -563,9 +564,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#10#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -614,9 +613,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#10#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -651,12 +648,12 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/buildScript/build.py" />
-    <entry file="file://$PROJECT_DIR$/src/Helpers.py">
+    <entry file="file://$PROJECT_DIR$/src/control.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="225">
+          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
           <folding>
-            <element signature="e#0#10#0" expanded="false" />
+            <element signature="e#1224#1244#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -669,27 +666,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/control.py">
+    <entry file="file://$PROJECT_DIR$/src/Helpers.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding>
-            <element signature="e#1224#1244#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SeqAnalysis2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1622">
-          <caret line="148" column="45" lean-forward="false" selection-start-line="148" selection-start-column="45" selection-end-line="148" selection-end-column="45" />
+        <state relative-caret-position="15">
+          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="17" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/LenaUI.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2946">
+        <state relative-caret-position="9525">
           <caret line="645" column="20" lean-forward="false" selection-start-line="645" selection-start-column="17" selection-end-line="645" selection-end-column="20" />
           <folding />
         </state>
@@ -697,8 +684,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/buildScript/build_MacUnix.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="15" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+        <state relative-caret-position="225">
+          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#27#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SeqAnalysis2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="528">
+          <caret line="161" column="20" lean-forward="false" selection-start-line="161" selection-start-column="20" selection-end-line="161" selection-end-column="20" />
           <folding />
         </state>
       </provider>
