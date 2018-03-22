@@ -10,7 +10,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 """
 
 from os import listdir
-from os.path import isfile, join
+from os.path import isfile, join, splitext
+#import pandas as pd
 import xml.etree.ElementTree as ET
 
 class Batch:
@@ -28,7 +29,7 @@ class Batch:
 				#Load xml tree to get subject ID
 				fullpath = join(batDir, f)
 				tree = ET.parse(fullpath)
-				subInfoNode = tree.find("ExportData/Child")
+ 				subInfoNode = tree.find("ExportData/Child")
 				subID = subInfoNode.attrib["id"]
 				
 				# Add a new subject ID and filename to the map
@@ -36,5 +37,11 @@ class Batch:
 					self.items[subID] = []
 				self.items[subID].append(fullpath)
 
-			#if ".csv" in f:
-				## Currently in development
+			if ".csv" in f:
+				csv_path = join(batDir, f)
+				csvID = splitext(f.split('_')[-1])[0]
+
+				if csvID not in self.items:
+					self.items[csvID] = []
+				self.items[csvID].append(csv_path)
+				 

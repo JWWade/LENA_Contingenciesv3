@@ -30,13 +30,13 @@ class EItem:
 
 # Event Item List
 class EItemList:
-	def __init__(self, _varMap={}, pid=0, its_filename=''):
+	def __init__(self, _varMap={}, pid=0, filename=''):
 		self.list = []
 		self.list_ = []
 		self._varMap = _varMap
 		self.seqType = self._varMap["seqType"]
 		self.pid = pid
-		self.its_filename = its_filename
+		self.filename = filename
 		self.relevantSpkrs = self._varMap["A"]+','+self._varMap["B"]+','+self._varMap["C"]+',Pause'
 		self.pauseDur = float(self._varMap["PauseDur"])
 		self.eventCnt = {"A":0,"B":0,"C":0,"P":0}
@@ -146,7 +146,7 @@ class EItemList:
 
 	def Header(self):
 		# Subject ID
-		h = 'PID,its_filename,'
+		h = 'PID,filename,'
 		
 		# Event Counts
 		for e in self.evTypes:
@@ -158,7 +158,7 @@ class EItemList:
 
 	def ResultsTuple(self):
 		# Subject ID
-		rt = self.pid + ',' + self.its_filename.split('/')[-1] + ','
+		rt = self.pid + ',' + self.filename.split('/')[-1] + ','
 
 		# Event Counts
 		for e in self.evTypes:
@@ -251,7 +251,7 @@ class SeqAnalysis:
 
 				# INITIALIZE ESSENTIAL OBJECTS
 				#Init event item list
-				eiList = EItemList(_varMap=self.varMap, pid=pID, its_filename=path)
+				eiList = EItemList(_varMap=self.varMap, pid=pID, filename=path)
 
 				#Load xml tree
 				tree = ET.parse(path)

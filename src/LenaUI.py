@@ -44,7 +44,7 @@ class LenaUI:
         root.title("LENA Contingencies")
 
         # Class Attributes
-        self.its_file_dict = {} # k:ID v:path/to/file
+        self.file_dict = {} # k:ID v:path/to/file
         self.input_dir = StringVar()
         self.output_dir = StringVar()
         self.output_format = []
@@ -282,12 +282,12 @@ class LenaUI:
         if output_dir:            
             self.output_dir.set(output_dir)
 
-    def get_its_files(self):
+    def get_files(self):
         "This method looks creates a dict of all .its files found in the input directory"
         tempDict = Batch(self.input_dir.get())
         for i in range(len(tempDict.items)):
             tempItem = tempDict.items.popitem()
-            self.its_file_dict.update({tempItem[0]:tempItem[1][0]})
+            self.file_dict.update({tempItem[0]:tempItem[1][0]})
 
     def check_config(self):
         "This method checks if all seq_config values are set. Returns error message if any aren't set."
@@ -413,9 +413,9 @@ class LenaUI:
             return 
         
         # retrieve .its files
-        self.get_its_files()
-        if len(self.its_file_dict) < 1:
-            self.write_to_window("No .its files in input directory!")
+        self.get_files()
+        if len(self.file_dict) < 1:
+            self.write_to_window("No .its or .csv files in input directory!")
             self.btm_submit_btn.configure(text="Submit", command=self.start_analysis)
             self.btm_submit_btn.configure(state='enable')
             self.btm_progress_bar.stop()
@@ -432,7 +432,7 @@ class LenaUI:
         self.btm_submit_btn.configure(text="Cancel", command=self.kill_threads)
 
         # create object to send to analysis
-        data = SeqData(self.its_file_dict, self.seq_config, self.num_threads.get(), self.output_format)
+        data = SeqData(self.file_dict, self.seq_config, self.num_threads.get(), self.output_format)
         self.seq_run_results = []
 
         # kick off analysis 
