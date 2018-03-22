@@ -144,6 +144,23 @@ class EItemList:
 				elif not(curr.spkr in self._varMap["A"] and nextB.spkr in self._varMap["B"]) and nextC.spkr not in self._varMap["C"]:
 					self.contingencies["d"] += 1
 
+		# A-->(B-->C)
+		elif self._varMap['seqType'] == 'A_BC':
+			print 'A-->(B-->C) Analysis in progress...'
+			# iterate over event items
+			for i in range(0, numItems - 2):
+				curr = self.list[i]
+				nextB = self.list[i + 1]
+				nextC = self.list[i + 2]
+				if curr.spkr in self._varMap["A"] and nextB.spkr in self._varMap["B"] and nextC.spkr in self._varMap["C"]:
+					self.contingencies["a"] += 1
+				elif curr.spkr in self._varMap["A"] and not (nextB.spkr in self._varMap["B"] and nextC.spkr in self._varMap["C"]):
+					self.contingencies["b"] += 1
+				elif curr.spkr not in self._varMap["A"] and nextB.spkr in self._varMap["B"] and nextC.spkr in self._varMap["C"]:
+					self.contingencies["c"] += 1
+				elif curr.spkr not in self._varMap["A"] and not (nextB.spkr in self._varMap["B"] and nextC.spkr in self._varMap["C"]):
+					self.contingencies["d"] += 1
+
 	def Header(self):
 		# Subject ID
 		h = 'PID,its_filename,'
