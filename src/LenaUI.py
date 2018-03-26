@@ -20,6 +20,7 @@ import time
 import ast
 import tkMessageBox
 from Helpers import *
+import xml.etree.ElementTree as ET
 
 MAC = 'Darwin'
 WINDOWS = 'Windows'
@@ -30,6 +31,9 @@ MAXTHREADS = 4
 codes = ('MAN','MAF','FAN','FAF','CHNSP','CHNNSP', \
 			'CHF','CXN','CXF','NON','NOF','OLN','OLF','TVN', \
 			'TVF','SIL')
+code_use = {'MAN':False,'MAF':False,'FAN':False,'FAF':False,'CHNSP':False,'CHNNSP':False, \
+			'CHF':False,'CXN':False,'CXF':False,'NON':False,'NOF':False,'OLN':False,'OLF':False,'TVN':False, \
+			'TVF':False,'SIL':False}
 codes_index = {'MAN':0,'MAF':1,'FAN':2,'FAF':3,'CHNSP':4,'CHNNSP':5, \
 			'CHF':6,'CXN':7,'CXF':8,'NON':9,'NOF':10,'OLN':11,'OLF':12,'TVN':13, \
 			'TVF':14,'SIL':15}
@@ -192,11 +196,57 @@ class LenaUI:
             self.var_c = templist
             print("C: "+str(self.var_c))
 
+    def get_labels(self):
+        labels = set()
+
+        #may not need this next line
+        print "getting its files"
+        self.get_its_files()
+        print self.its_file_dict
+
+        #Loop through files in directory
+        for filename in self.its_file_dict:
+
+            print "parsing " + self.its_file_dict[filename]
+            #catch for .its files
+            if self.its_file_dict[filename].endswith('.its'):
+                tree = ET.parse(self.its_file_dict[filename])
+                root = tree.getroot()
+
+                #Loop through segments in file
+                for segment in root.iter('Segment'):
+                    if segment.get('spkr') != None:
+                        print segment.get('spkr')
+                        if segment.get('spkr') == 'CHN':
+                            print "in loop"
+                            if segment.get('startUtt1') != None:
+                                labels.add('CHNSP')
+                            else:
+                                labels.add('CHNNSP')
+                        else:
+                            labels.add(segment.get('spkr'))
+
+            else: continue
+
+        print "done parsing"
+        print labels
+        for tag in labels:
+            code_use[tag] = True;
+
+        self.setup_mid_frame()
+
+
+
+
     def setup_mid_frame(self):
         "Configure mid frame. Includes sequence type selection and variable selection(a,b,c)."
         # MID FRAME CONFIG
-        # create mid frame widgets
-        code_vars = StringVar(value=codes)
+        # create mid frame
+        used_codes = ()
+        for code in codes:
+            if code_use[code]:
+                used_codes += (code,)
+        code_vars = StringVar(value=used_codes)
 
         self.mid_abc_a_box = Listbox(self.mid_frame, height=16, listvariable=code_vars, selectmode=MULTIPLE, width=9, exportselection=False)
         self.mid_abc_b_box = Listbox(self.mid_frame, height=16, listvariable=code_vars, selectmode=MULTIPLE, width=9, exportselection=False)
@@ -251,6 +301,10 @@ class LenaUI:
         mid_pause_up_btn.grid(row=7, column=3, sticky=W)
         self.mid_pause_checkbox.grid(row=8, column=0, pady=4, columnspan=4)
 
+        #self.mid_abc_a_box.update()
+        #self.mid_abc_b_box.update()
+        #self.mid_abc_c_box.update()
+
     def setup_btm_frame(self):
         "Configure bottom frame. Inlcudes progress bar, submit/cancel button, and message window."
         # BOTTOM FRAME CONFIG
@@ -275,6 +329,10 @@ class LenaUI:
         input_dir = tkFileDialog.askdirectory()
         if input_dir:
             self.input_dir.set(input_dir)
+            self.get_labels()
+            #self.mid_abc_a_box.update()
+            #self.mid_abc_b_box.update()
+            #self.mid_abc_c_box.update()
 
     def select_output_dir(self):
         "Updates output_dir variable. Bound to top_out_browse_btn."
