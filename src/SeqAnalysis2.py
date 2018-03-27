@@ -252,6 +252,7 @@ class SeqAnalysis:
 				# INITIALIZE ESSENTIAL OBJECTS
 				#Init event item list
 				eiList = EItemList(_varMap=self.varMap, pid=pID, its_filename=path)
+			
 
 				#Load xml tree
 				tree = ET.parse(path)
@@ -266,6 +267,8 @@ class SeqAnalysis:
 					eiList.AddEItem( segs[i] )
 				eiList.AddEItem( segs[-1], flag='Terminal' )
 
+
+				
 				# free memory used by xml tree
 				tree = None
 
