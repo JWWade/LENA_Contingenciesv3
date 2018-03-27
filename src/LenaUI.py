@@ -21,6 +21,7 @@ import ast
 import tkMessageBox
 from Helpers import *
 import xml.etree.ElementTree as ET
+import csv
 
 MAC = 'Darwin'
 WINDOWS = 'Windows'
@@ -216,15 +217,26 @@ class LenaUI:
                 #Loop through segments in file
                 for segment in root.iter('Segment'):
                     if segment.get('spkr') != None:
-                        print segment.get('spkr')
                         if segment.get('spkr') == 'CHN':
-                            print "in loop"
                             if segment.get('startUtt1') != None:
                                 labels.add('CHNSP')
                             else:
                                 labels.add('CHNNSP')
                         else:
                             labels.add(segment.get('spkr'))
+
+            elif self.its_file_dict[filename].endswith('.csv'):
+                print "found csv"
+                with open(self.its_file_dict[filename]) as csvFile:
+                    reader = csv.DictReader(csvFile)
+                    for row in reader:
+                        print row
+                        for (start, end, id_str) in row:
+                            print id_str
+                            if id_str in codes:
+                                print "found code"
+                                labels.add(id_str)
+                csvFile.close()
 
             else: continue
 
