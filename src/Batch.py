@@ -39,7 +39,7 @@ class Batch:
 
 			if ".csv" in f:
 				csv_path = join(batDir, f)
-				csvID = splitext(f.split('_')[-1])[0]
+				csvID = splitext(f.split('_')[-1])[0] # getting csvID by splitting on '_' and removing extension
 
 				if csvID not in self.items:
 					self.items[csvID] = []
