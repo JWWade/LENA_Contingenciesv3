@@ -1,8 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fbea7ae7-9e30-4623-91df-84c89032c73c" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/LenaUI.py" afterPath="$PROJECT_DIR$/src/LenaUI.py" />
+    <list default="true" id="746f4d8d-5e51-4e8e-9101-2da07322663d" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/buildScript/LenaContingencies V3.spec" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/buildScript/LenaContingenciesV3.spec" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/buildScript/build/LenaContingencies V3/base_library.zip" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/buildScript/build/LenaContingencies V3/out00-Analysis.toc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/buildScript/build/LenaContingencies V3/out00-BUNDLE.toc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/buildScript/build/LenaContingencies V3/out00-EXE.toc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/buildScript/build/LenaContingencies V3/out00-PKG.pkg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/buildScript/build/LenaContingencies V3/out00-PKG.toc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/buildScript/build/LenaContingencies V3/out00-PYZ.pyz" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/buildScript/build/LenaContingencies V3/out00-PYZ.toc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/buildScript/build/LenaContingencies V3/warnLenaContingencies V3.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/buildScript/build/LenaContingencies V3/xref-LenaContingencies V3.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/buildScript/build/LenaContingenciesV3/base_library.zip" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/buildScript/build/LenaContingenciesV3/out00-Analysis.toc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/buildScript/build/LenaContingenciesV3/out00-BUNDLE.toc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/buildScript/build/LenaContingenciesV3/out00-EXE.toc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/buildScript/build/LenaContingenciesV3/out00-PKG.pkg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/buildScript/build/LenaContingenciesV3/out00-PKG.toc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/buildScript/build/LenaContingenciesV3/out00-PYZ.pyz" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/buildScript/build/LenaContingenciesV3/out00-PYZ.toc" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/buildScript/build/LenaContingenciesV3/warnLenaContingenciesV3.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/buildScript/build/LenaContingenciesV3/xref-LenaContingenciesV3.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/buildScript/build_MacUnix.py" afterPath="$PROJECT_DIR$/buildScript/build_MacUnix.py" />
+      <change beforePath="$PROJECT_DIR$/builds/v3/LenaContingencies V3" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/builds/v3/LenaContingencies V3.app/Contents/Info.plist" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/builds/v3/LenaContingencies V3.app/Contents/MacOS/LenaContingencies V3" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/builds/v3/LenaContingencies V3.app/Contents/Resources/LENACon3-Icon.icns" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/builds/v3/LenaContingenciesV3" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/builds/v3/LenaContingenciesV3 2.app/Contents/Info.plist" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/builds/v3/LenaContingenciesV3 2.app/Contents/MacOS/LenaContingenciesV3" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/builds/v3/LenaContingenciesV3 2.app/Contents/Resources/LENACon3-Icon.icns" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/builds/v3/LenaContingenciesV3.app/Contents/Info.plist" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/builds/v3/LenaContingenciesV3.app/Contents/MacOS/LenaContingenciesV3" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/builds/v3/LenaContingenciesV3.app/Contents/Resources/LENACon3-Icon.icns" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/SeqAnalysis2.py" afterPath="$PROJECT_DIR$/src/SeqAnalysis2.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -37,22 +72,42 @@
       </file>
     </leaf>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>its_file_dict</find>
+      <find>mid_abc_btn</find>
+      <find>mid_abc2_btn</find>
+      <find>sequence_type</find>
+      <find>abc</find>
+      <find>C</find>
+      <find>ABC</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/src/Batch.py" />
+        <option value="$PROJECT_DIR$/src/control.py" />
         <option value="$PROJECT_DIR$/src/LenaUI.py" />
+        <option value="$PROJECT_DIR$/buildScript/build_MacUnix.py" />
+        <option value="$PROJECT_DIR$/src/SeqAnalysis2.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="599" />
-    <option name="y" value="48" />
-    <option name="width" value="1400" />
-    <option name="height" value="990" />
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
   </component>
+  <component name="ProjectFrameBounds" fullScreen="true">
+    <option name="width" value="1280" />
+    <option name="height" value="800" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
@@ -75,6 +130,26 @@
             <path>
               <item name="LENA_Contingenciesv3" type="b2602c69:ProjectViewProjectNode" />
               <item name="LENA_Contingenciesv3" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="LENA_Contingenciesv3" type="b2602c69:ProjectViewProjectNode" />
+              <item name="LENA_Contingenciesv3" type="462c0819:PsiDirectoryNode" />
+              <item name="builds" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="LENA_Contingenciesv3" type="b2602c69:ProjectViewProjectNode" />
+              <item name="LENA_Contingenciesv3" type="462c0819:PsiDirectoryNode" />
+              <item name="buildScript" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="LENA_Contingenciesv3" type="b2602c69:ProjectViewProjectNode" />
+              <item name="LENA_Contingenciesv3" type="462c0819:PsiDirectoryNode" />
+              <item name="icon" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="LENA_Contingenciesv3" type="b2602c69:ProjectViewProjectNode" />
+              <item name="LENA_Contingenciesv3" type="462c0819:PsiDirectoryNode" />
+              <item name="manual" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="LENA_Contingenciesv3" type="b2602c69:ProjectViewProjectNode" />
@@ -193,10 +268,82 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Helpers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/py2exe_build.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SeqAnalysis2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="26" column="39" lean-forward="false" selection-start-line="26" selection-start-column="39" selection-end-line="26" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/LenaUI.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4950">
+          <caret line="340" column="61" lean-forward="true" selection-start-line="340" selection-start-column="61" selection-end-line="340" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Batch.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/control.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#1224#1244#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Helpers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/py2exe_build.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SeqAnalysis2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="26" column="39" lean-forward="false" selection-start-line="26" selection-start-column="39" selection-end-line="26" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/LenaUI.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="11715">
+          <caret line="791" column="136" lean-forward="false" selection-start-line="791" selection-start-column="136" selection-end-line="791" selection-end-column="136" />
           <folding />
         </state>
       </provider>
@@ -216,6 +363,14 @@
           <folding>
             <element signature="e#1158#1182#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SeqAnalysis2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="528">
+          <caret line="161" column="20" lean-forward="false" selection-start-line="161" selection-start-column="20" selection-end-line="161" selection-end-column="20" />
+          <folding />
         </state>
       </provider>
     </entry>

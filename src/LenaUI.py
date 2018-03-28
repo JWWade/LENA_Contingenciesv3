@@ -27,6 +27,7 @@ MAC = 'Darwin'
 WINDOWS = 'Windows'
 AB = 'A_B'
 ABC = 'AB_C'
+ABC2 = 'A_BC'
 OK = 'ok'
 MAXTHREADS = 4
 codes = ('MAN','MAF','FAN','FAF','CHNSP','CHNNSP', \
@@ -268,6 +269,9 @@ class LenaUI:
         mid_type_label = ttk.Label(self.mid_frame, text='Type of Analysis')       
         self.mid_ab_btn = ttk.Radiobutton(self.mid_frame, text='A ---> B', variable=self.sequence_type, value=AB, command=disable_c)
         self.mid_abc_btn = ttk.Radiobutton(self.mid_frame, text='( A ---> B ) ---> C', variable=self.sequence_type, value=ABC, command=enable_c)        
+        #Added for FR-17. Changes oder of operations from (A->B)->C to A->(B->C)
+        self.mid_abc2_btn = ttk.Radiobutton(self.mid_frame, text='A ---> ( B ---> C )', variable=self.sequence_type, value=ABC2, command=enable_c)
+
         mid_filler_label = ttk.Label(self.mid_frame, text="     ")
         mid_conf_label = ttk.Label(self.mid_frame, text="Configure Analysis")
         mid_conf_abc_a_label = ttk.Label(self.mid_frame, text="A") 
@@ -287,12 +291,13 @@ class LenaUI:
         mid_type_label.grid(row=0, column=0, columnspan=4)
         self.mid_ab_btn.grid(row=1, column=0, columnspan=3, sticky = W)
         self.mid_abc_btn.grid(row=2, column=0, columnspan=3, sticky = W)
-        mid_conf_abc_a_label.grid(row=3, column=0)
-        mid_conf_abc_b_label.grid(row=3, column=1)
-        mid_conf_abc_c_label.grid(row=3, column=2)
-        self.mid_abc_a_box.grid(row=4, column=0)
-        self.mid_abc_b_box.grid(row=4, column=1)
-        self.mid_abc_c_box.grid(row=4, column=2)
+        self.mid_abc2_btn.grid(row=3, column=0, columnspan=3, sticky = W)
+        mid_conf_abc_a_label.grid(row=4, column=0)
+        mid_conf_abc_b_label.grid(row=4, column=1)
+        mid_conf_abc_c_label.grid(row=4, column=2)
+        self.mid_abc_a_box.grid(row=5, column=0)
+        self.mid_abc_b_box.grid(row=5, column=1)
+        self.mid_abc_c_box.grid(row=5, column=2)
 
         mid_filler_label3.grid(row=5, column=0, columnspan=3)
         mid_pause_label.grid(row=6, column=0, columnspan=4, pady=5)
@@ -347,6 +352,7 @@ class LenaUI:
 
     def get_files(self):
         "This method looks creates a dict of all .its files found in the input directory"
+        # ************************************
         tempDict = Batch(self.input_dir.get())
         for i in range(len(tempDict.items)):
             tempItem = tempDict.items.popitem()
@@ -364,7 +370,7 @@ class LenaUI:
             return "Output directory not set! "
 
         # check sequence_type
-        if str(self.sequence_type.get()) not in (AB, ABC):
+        if str(self.sequence_type.get()) not in (AB, ABC, ABC2):
             return "Sequence Type not set! "
 
         # check var_a
@@ -376,7 +382,7 @@ class LenaUI:
             return "B is not set! "
 
         # check var_c
-        if (self.sequence_type.get() == ABC):
+        if (self.sequence_type.get() == ABC or self.sequence_type.get() == ABC2):
             if not self.var_c:
                 return "C is not set! "
 
@@ -540,6 +546,8 @@ class LenaUI:
                 pass
             elif new_config['seqType'] == ABC:
                 pass
+            elif new_config['seqType'] == ABC2:
+                pass
             else:
                 raise Exception("seqType Invalid")
             
@@ -552,7 +560,7 @@ class LenaUI:
                 raise Exception("Invalid Var B")
 
             # check C
-            if(new_config['seqType'] == ABC):
+            if(new_config['seqType'] == ABC or new_config['seqType'] == ABC2):
                 if not any(x in codes for x in new_config['C'].split(',')):
                     raise Exception("Invalid Var C")
 
@@ -662,7 +670,7 @@ class LenaUI:
                 self.var_b.append(item)
 
             #self.mid_abc_c_box
-            if new_config['seqType'] == ABC:
+            if (new_config['seqType'] == ABC or new_config['seqType'] == ABC2):
                 var_c_list = new_config['C'].split(',')
                 for item in var_c_list:
                     self.mid_abc_c_box.select_set(codes_index[item])
@@ -731,8 +739,10 @@ class LenaUI:
         # reset the selection to nothing selected update
         self.mid_ab_btn.configure(variable=self.sequence_type)
         self.mid_abc_btn.configure(variable=self.sequence_type)
+        self.mid_abc2_btn.configure(variable=self.sequence_type)
         self.mid_ab_btn.update()
         self.mid_abc_btn.update()
+        self.mid_abc2_btn.update()
 
         # reset slider and pause_duration entry box update
         self.mid_pause_slider.configure(variable=self.pause_duration)
@@ -849,9 +859,9 @@ class LenaUI:
         instruction_var += "\tA--->B  or  (A---> B)---> C: type of analysis performed\n"
         instruction_var += "\tA, B, C:  Drop down menus to select desired variables\n\n"
         instruction_var += "8) PAUSE DURATION:  Use entry field, slider bar, and/or buttons to choose pause duration\n"
-        instruction_var += "\tEntry field:  enter in specific pause duration\n"
+        instruction_var += "\tEntry field:  enter in specific pause duration in seconds and tenths of seconds\n"
         instruction_var += "\tSlider bar:  Click and hold to move along bar\n"
-        instruction_var += "\tButtons(<,>):  Moves slider bar by .1 in specified direction\n\n"
-        instruction_var += "9) ENABLE ROUNDING:  Select to enable rouding\n"
+        instruction_var += "\tButtons(<,>):  Moves slider bar by 0.1 seconds in specified direction\n\n"
+        instruction_var += "9) ENABLE ROUNDING:  Select to enable rounding to nearest integer with tie-breaking threshold of 0.5 seconds\n"
         instruction_var += "10) SUBMIT:  Submits the current data in fields to the program to start analysis\n"
         return instruction_var
