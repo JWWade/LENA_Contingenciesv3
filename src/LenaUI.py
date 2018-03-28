@@ -200,15 +200,9 @@ class LenaUI:
     def get_labels(self):
         labels = set()
 
-        #may not need this next line
-        print "getting its files"
-        self.get_its_files()
-        print self.its_file_dict
-
         #Loop through files in directory
         for filename in self.its_file_dict:
 
-            print "parsing " + self.its_file_dict[filename]
             #catch for .its files
             if self.its_file_dict[filename].endswith('.its'):
                 tree = ET.parse(self.its_file_dict[filename])
@@ -338,10 +332,14 @@ class LenaUI:
 
     def select_input_dir(self):
         "Updates input_dir variable. Bound to top_in_browse_btn."
+        self.file_dict.clear()
         input_dir = tkFileDialog.askdirectory()
         if input_dir:
             self.input_dir.set(input_dir)
+            self.get_files()
             self.get_labels()
+            for code in code_use:
+                code_use[code] = False
             #self.mid_abc_a_box.update()
             #self.mid_abc_b_box.update()
             #self.mid_abc_c_box.update()
@@ -483,7 +481,7 @@ class LenaUI:
             return 
         
         # retrieve .its files
-        self.get_files()
+        #self.get_files()
         if len(self.file_dict) < 1:
             self.write_to_window("No .its or .csv files in input directory!")
             self.btm_submit_btn.configure(text="Submit", command=self.start_analysis)
