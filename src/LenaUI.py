@@ -201,11 +201,11 @@ class LenaUI:
         labels = set()
 
         #Loop through files in directory
-        for filename in self.its_file_dict:
+        for filename in self.file_dict:
 
             #catch for .its files
-            if self.its_file_dict[filename].endswith('.its'):
-                tree = ET.parse(self.its_file_dict[filename])
+            if self.file_dict[filename].endswith('.its'):
+                tree = ET.parse(self.file_dict[filename])
                 root = tree.getroot()
 
                 #Loop through segments in file
@@ -219,23 +219,17 @@ class LenaUI:
                         else:
                             labels.add(segment.get('spkr'))
 
-            elif self.its_file_dict[filename].endswith('.csv'):
-                print "found csv"
-                with open(self.its_file_dict[filename]) as csvFile:
+            elif self.file_dict[filename].endswith('.csv'):
+                with open(self.file_dict[filename]) as csvFile:
                     reader = csv.DictReader(csvFile)
                     for row in reader:
-                        print row
-                        for (start, end, id_str) in row:
-                            print id_str
-                            if id_str in codes:
-                                print "found code"
-                                labels.add(id_str)
+                        if row['ID'] in codes:
+                            labels.add(row['ID'])
                 csvFile.close()
 
             else: continue
 
-        print "done parsing"
-        print labels
+        #print labels
         for tag in labels:
             code_use[tag] = True;
 
@@ -253,6 +247,7 @@ class LenaUI:
             if code_use[code]:
                 used_codes += (code,)
         code_vars = StringVar(value=used_codes)
+
 
         self.mid_abc_a_box = Listbox(self.mid_frame, height=16, listvariable=code_vars, selectmode=MULTIPLE, width=9, exportselection=False)
         self.mid_abc_b_box = Listbox(self.mid_frame, height=16, listvariable=code_vars, selectmode=MULTIPLE, width=9, exportselection=False)
