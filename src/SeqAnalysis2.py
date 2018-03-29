@@ -12,6 +12,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 import xml.etree.ElementTree as ET
 from copy import deepcopy
 import os
+import csv
+import pandas as pd
 import threading
 import Queue
 from Helpers import *
@@ -23,20 +25,32 @@ class EItem:
 		self.spkr = attr["spkr"]
 		self.onset = attr["startTime"]
 		self.offset = attr["endTime"]
+		#print self.spkr
 
 	def GetFloatTime(self,arg='onset'):
 		t = self.onset[2:-1] if arg=='onset' else self.offset[2:-1]
 		return float(t)
 
+class EItemCSV:
+	def __init__(self, data):
+		self.spkr = data[2]
+		self.onset = data[0]
+		self.offset = data[1]
+		#print self.spkr
+
+	def GetFloatTimeCSV(self, arg='onset'):
+		t = self.onset[2:-1] if arg=='onset' else self.offset[2:-1]
+		return float(t)
+
 # Event Item List
 class EItemList:
-	def __init__(self, _varMap={}, pid=0, filename=''):
+	def __init__(self, _varMap={}, pid=0, its_filename=''):
 		self.list = []
 		self.list_ = []
 		self._varMap = _varMap
 		self.seqType = self._varMap["seqType"]
 		self.pid = pid
-		self.filename = filename
+		self.its_filename = its_filename
 		self.relevantSpkrs = self._varMap["A"]+','+self._varMap["B"]+','+self._varMap["C"]+',Pause'
 		self.pauseDur = float(self._varMap["PauseDur"])
 		self.eventCnt = {"A":0,"B":0,"C":0,"P":0}
@@ -54,6 +68,14 @@ class EItemList:
 			seg.attrib["spkr"]="Pause"
 		if seg.attrib["spkr"] in self.relevantSpkrs:
 			self.list.append( EItem(seg.attrib) )
+
+	def AddEItemCSV(self, data_array, flag=None):
+		#print 'This is csv stuff'
+
+		if(flag is 'Initial' or flag is 'Terminal') and data_array[2] not in self.relevantSpkrs:
+			data_array[2] = "Pause"
+		if data_array[2] in self.relevantSpkrs:
+			self.list.append( EItemCSV(data_array) )
 
 	def Modify_CHN_Events(self, seg):
 		CHN_mod = ''
@@ -104,6 +126,51 @@ class EItemList:
 		self.list = deepcopy(self.list_)
 		self.list_ = None
 
+	def InsertPausesCSV(self):
+		self.list_.append(deepcopy(self.list[0]))
+		#print(self.Size())
+		#print(self.list[0].startTime)
+		for i in range(1,self.Size()):
+			print 'Before GetFloatTime'
+			#determine whether to add pause before copying event
+			curEvT = self.list[i].GetFloatTimeCSV('onset')
+			preEvT = self.list[i-1].GetFloatTimeCSV('offset')
+
+			print 'After GetFloatTime'
+			eT = curEvT - preEvT
+			P = self.pauseDur
+			if eT >= P:
+				# calculate number of pauses to insert
+				numP = 0
+				if self.round is True:
+					try:
+						numP = int( (eT / P) + .5 )
+					except ZeroDivisionError:
+						numP = int( (0) + .5)
+				else:
+					try:
+						numP = int( (float(eT) / float(P)) )
+					except ZeroDivisionError:
+						numP = int((0) + .5)
+
+				for j in range(0,numP):
+					# insert pause
+					startTime = preEvT+(j*P)
+					endTime = min(curEvT,startTime+P)
+					pAttr = []
+					pAttr.append(startTime)
+					pAttr.append(endTime)
+					pAttr.append("Pause")
+					#pAttr = {"spkr":"Pause","startTime":str(startTime),"endTime":str(endTime)}
+					print 'Do we make it here successfully?'
+					self.list_.append( EItemCSV(pAttr) )
+			#add current event
+			self.list_.append( deepcopy(self.list[i]) )
+		print 'What about here yo?'
+		#free memory used by interim list
+		self.list = deepcopy(self.list_)
+		self.list_ = None
+
 	def TallyItems(self):
 		for i in range(0, self.Size()): # iterate over Event Items
 			for e in self.evTypes:			
@@ -146,7 +213,7 @@ class EItemList:
 
 	def Header(self):
 		# Subject ID
-		h = 'PID,filename,'
+		h = 'PID,its_filename,'
 		
 		# Event Counts
 		for e in self.evTypes:
@@ -158,7 +225,7 @@ class EItemList:
 
 	def ResultsTuple(self):
 		# Subject ID
-		rt = self.pid + ',' + self.filename.split('/')[-1] + ','
+		rt = self.pid + ',' + self.its_filename.split('/')[-1] + ','
 
 		# Event Counts
 		for e in self.evTypes:
@@ -251,30 +318,63 @@ class SeqAnalysis:
 
 				# INITIALIZE ESSENTIAL OBJECTS
 				#Init event item list
-				eiList = EItemList(_varMap=self.varMap, pid=pID, filename=path)
+				eiList = EItemList(_varMap=self.varMap, pid=pID, its_filename=path)
+				
+				if os.path.splitext(path)[1] == '.csv':
+					#csv_data = list(csv.reader(open(path)))
+					df = pd.read_csv(path)
+					csv_data = df.values.tolist()
+					
+					print pd.DataFrame(csv_data)
 
-				#Load xml tree
-				tree = ET.parse(path)
+					csv_arr = []
+					csv_arr.append(str(csv_data[0][0]))
+					csv_arr.append(str(csv_data[0][1]))
+					csv_arr.append(str(csv_data[0][2]))
+					#print(csv_arr)
+					#print(csv_data[0][1])
 
-				#Get access to only the conversational segments in the .its file
-				recNode = tree.find("ProcessingUnit")
-				segs = list(recNode.iter("Segment"))
+					#print(csv_arr[0])
+					#print(csv_arr[1])
+					#print(csv_arr[2])
+					eiList.AddEItemCSV(csv_arr, flag='Initial')
+					for i in range(2, len(csv_data) - 1):
+						csv_arr[0] = str(csv_data[i][0])
+						csv_arr[1] = str(csv_data[i][1])
+						csv_arr[2] = str(csv_data[i][2])
+						eiList.AddEItemCSV(csv_arr)
+					csv_arr[0] = str(csv_data[-1][0])
+					csv_arr[1] = str(csv_data[-1][1])
+					csv_arr[2] = str(csv_data[-1][2])
+					eiList.AddEItemCSV(csv_arr, flag='Terminal')
 
-				# iterate over segments and copy
-				eiList.AddEItem( segs[0], flag='Initial' )
-				for i in range(1, len(segs)-1):
-					eiList.AddEItem( segs[i] )
-				eiList.AddEItem( segs[-1], flag='Terminal' )
+					eiList.InsertPausesCSV()
+				else:
+					#Load xml tree
+					tree = ET.parse(path)
 
-				# free memory used by xml tree
-				tree = None
+					#Get access to only the conversational segments in the .its file
+					recNode = tree.find("ProcessingUnit")
+					segs = list(recNode.iter("Segment"))
 
+					# iterate over segments and copy
+					eiList.AddEItem( segs[0], flag='Initial' )
+					for i in range(1, len(segs)-1):
+						eiList.AddEItem( segs[i] )
+					eiList.AddEItem( segs[-1], flag='Terminal' )
+
+					# free memory used by xml tree
+					tree = None
+					eiList.InsertPauses()
+				
 				#Insert contiguous pauses
-				eiList.InsertPauses()
+				
 
+				print 'Made it past InsertPauses()'
 				#Tally each item in the EItemList
 				eiList.TallyItems()
 
+				print 'Made it past TallyItems()'
 				#Perform primary analysis
 				eiList.SeqAn()
 
