@@ -1,0 +1,30 @@
+// build a specfile for pyinstaller!
+// first tho, just install python on the C: drive the old school way. 
+// goto python.com or whatever and download the windows msi installer
+// or whatever. 
+
+// once you get pyhon installed, 
+// use pip to install pyinstaller, 
+
+// try to avoid using a linux shell on win for this, 
+// i.e. cygwin or git-bash.
+// trusht meh, it's easier just doing it native win way.
+
+// run these cmds in CMD or powershell or whatever the fluff 
+// windows cmd propmt is called nowadays
+// back in the day we called it DOS yo.
+
+// directory structure may vary, but args and flags are saem
+// run these from the src/ directory of the project. 
+
+"C:\python27\Scripts\pyi-makespec" --onefile control.py -i=../icon/lenacon3_icon.ico --name=LENAContingenciesV3 --hidden-import=xlsxwriter
+
+// this creates the necessary .spec file
+// try to avoid rolling  your own .spec file, 
+// for whatever reason, home~rolled .spec files get ignored
+
+// now you're ready to experience the magic of pyinstaller!
+// run this from the same dir as the .spec file and control.py
+// or whatever the main python file of teh project is. 
+
+"C:\python27\Scripts\pyinstaller" LENAContingenciesV3.spec --workpath=../build --distpath=../dist/ --onefile
