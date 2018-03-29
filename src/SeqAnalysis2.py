@@ -25,7 +25,6 @@ class EItem:
 		self.spkr = attr["spkr"]
 		self.onset = attr["startTime"]
 		self.offset = attr["endTime"]
-		#print self.spkr
 
 	def GetFloatTime(self,arg='onset'):
 		t = self.onset[2:-1] if arg=='onset' else self.offset[2:-1]
@@ -36,7 +35,6 @@ class EItemCSV:
 		self.spkr = data[2]
 		self.onset = data[0]
 		self.offset = data[1]
-		#print self.spkr
 
 	def GetFloatTimeCSV(self, arg='onset'):
 		t = self.onset[2:-1] if arg=='onset' else self.offset[2:-1]
@@ -70,7 +68,6 @@ class EItemList:
 			self.list.append( EItem(seg.attrib) )
 
 	def AddEItemCSV(self, data_array, flag=None):
-		#print 'This is csv stuff'
 
 		if(flag is 'Initial' or flag is 'Terminal') and data_array[2] not in self.relevantSpkrs:
 			data_array[2] = "Pause"
@@ -128,15 +125,11 @@ class EItemList:
 
 	def InsertPausesCSV(self):
 		self.list_.append(deepcopy(self.list[0]))
-		#print(self.Size())
-		#print(self.list[0].startTime)
 		for i in range(1,self.Size()):
-			print 'Before GetFloatTime'
 			#determine whether to add pause before copying event
-			curEvT = self.list[i].GetFloatTimeCSV('onset')
-			preEvT = self.list[i-1].GetFloatTimeCSV('offset')
+			curEvT = self.list[i].onset
+			preEvT = self.list[i-1].offset
 
-			print 'After GetFloatTime'
 			eT = curEvT - preEvT
 			P = self.pauseDur
 			if eT >= P:
@@ -146,27 +139,22 @@ class EItemList:
 					try:
 						numP = int( (eT / P) + .5 )
 					except ZeroDivisionError:
-						numP = int( (0) + .5)
+						numP = int(0 + .5)
 				else:
 					try:
 						numP = int( (float(eT) / float(P)) )
 					except ZeroDivisionError:
-						numP = int((0) + .5)
+						numP = int(0 + .5)
 
 				for j in range(0,numP):
 					# insert pause
 					startTime = preEvT+(j*P)
 					endTime = min(curEvT,startTime+P)
-					pAttr = []
-					pAttr.append(startTime)
-					pAttr.append(endTime)
-					pAttr.append("Pause")
+					pAttr = [startTime, endTime, "Pause"]
 					#pAttr = {"spkr":"Pause","startTime":str(startTime),"endTime":str(endTime)}
-					print 'Do we make it here successfully?'
 					self.list_.append( EItemCSV(pAttr) )
 			#add current event
 			self.list_.append( deepcopy(self.list[i]) )
-		print 'What about here yo?'
 		#free memory used by interim list
 		self.list = deepcopy(self.list_)
 		self.list_ = None
@@ -325,27 +313,17 @@ class SeqAnalysis:
 					df = pd.read_csv(path)
 					csv_data = df.values.tolist()
 					
-					print pd.DataFrame(csv_data)
+					csv_arr = [csv_data[0][0], csv_data[0][1], csv_data[0][2]]
 
-					csv_arr = []
-					csv_arr.append(str(csv_data[0][0]))
-					csv_arr.append(str(csv_data[0][1]))
-					csv_arr.append(str(csv_data[0][2]))
-					#print(csv_arr)
-					#print(csv_data[0][1])
-
-					#print(csv_arr[0])
-					#print(csv_arr[1])
-					#print(csv_arr[2])
 					eiList.AddEItemCSV(csv_arr, flag='Initial')
 					for i in range(2, len(csv_data) - 1):
-						csv_arr[0] = str(csv_data[i][0])
-						csv_arr[1] = str(csv_data[i][1])
-						csv_arr[2] = str(csv_data[i][2])
+						csv_arr[0] = csv_data[i][0]
+						csv_arr[1] = csv_data[i][1]
+						csv_arr[2] = csv_data[i][2]
 						eiList.AddEItemCSV(csv_arr)
-					csv_arr[0] = str(csv_data[-1][0])
-					csv_arr[1] = str(csv_data[-1][1])
-					csv_arr[2] = str(csv_data[-1][2])
+					csv_arr[0] = csv_data[-1][0]
+					csv_arr[1] = csv_data[-1][1]
+					csv_arr[2] = csv_data[-1][2]
 					eiList.AddEItemCSV(csv_arr, flag='Terminal')
 
 					eiList.InsertPausesCSV()
@@ -370,11 +348,9 @@ class SeqAnalysis:
 				#Insert contiguous pauses
 				
 
-				print 'Made it past InsertPauses()'
 				#Tally each item in the EItemList
 				eiList.TallyItems()
 
-				print 'Made it past TallyItems()'
 				#Perform primary analysis
 				eiList.SeqAn()
 
