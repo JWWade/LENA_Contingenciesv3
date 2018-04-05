@@ -2,42 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="793318db-2aff-4649-9b93-5c3257a98b99" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/LENA_Contingenciesv3.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README_v2.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/buildScript/.foo.spec" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/buildScript/LenaContingencies V3.spec" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/buildScript/build/LenaContingencies V3/out00-Analysis.toc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/buildScript/build/LenaContingencies V3/out00-BUNDLE.toc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/buildScript/build/LenaContingencies V3/out00-EXE.toc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/buildScript/build/LenaContingencies V3/out00-PKG.pkg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/buildScript/build/LenaContingencies V3/out00-PKG.toc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/buildScript/build/LenaContingencies V3/out00-PYZ.pyz" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/buildScript/build/LenaContingencies V3/out00-PYZ.toc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/buildScript/build/LenaContingencies V3/out00-Tree.toc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/buildScript/build/LenaContingencies V3/out01-Tree.toc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/buildScript/build/LenaContingencies V3/warnLenaContingencies V3.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/buildScript/build/LenaContingencies V3/xref-LenaContingencies V3.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/buildScript/build_MacUnix.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/builds/v2/README_v2.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/builds/v2/icon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/builds/v2/py2exe_build.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/builds/v3/LenaContingencies V3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/builds/v3/LenaContingencies V3.app/Contents/Info.plist" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/builds/v3/LenaContingencies V3.app/Contents/MacOS/LenaContingencies V3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/builds/v3/LenaContingencies V3.app/Contents/Resources/LENACon3-Icon.icns" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icon/LENACon3-Icon.icns" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icon/LENACon3-Icon.ico" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/builds/v1/LENA_Contingencies2_setup.exe" beforeDir="false" afterPath="$PROJECT_DIR$/builds/v2/LENA_Contingencies2_setup.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Batch.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Batch.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/LenaUI.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/LenaUI.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SeqAnalysis2.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/SeqAnalysis2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/control.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/control.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -54,7 +19,7 @@
       <file leaf-file-name="Batch.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Batch.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="555">
+            <state relative-caret-position="336">
               <caret line="48" selection-start-line="48" selection-end-line="48" />
             </state>
           </provider>
@@ -63,7 +28,7 @@
       <file leaf-file-name="SeqAnalysis2.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SeqAnalysis2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
+            <state relative-caret-position="-1413">
               <caret line="28" column="38" selection-start-line="28" selection-start-column="38" selection-end-line="28" selection-end-column="38" />
             </state>
           </provider>
@@ -81,8 +46,8 @@
       <file leaf-file-name="LenaUI.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/LenaUI.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="129">
-              <caret line="492" selection-start-line="492" selection-end-line="492" />
+            <state relative-caret-position="7500">
+              <caret line="512" column="36" selection-start-line="512" selection-start-column="36" selection-end-line="512" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -92,9 +57,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="165">
               <caret line="11" selection-start-line="11" selection-end-line="11" />
-              <folding>
-                <element signature="e#1247#1268#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -111,6 +73,7 @@
       <find>C</find>
       <find>ABC</find>
       <find>tkMessage</find>
+      <find>file_dict</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -249,7 +212,7 @@
       <window_info anchor="right" id="R Packages" order="4" />
       <window_info anchor="right" id="R Graphics" order="3" />
       <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32716927" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32716927" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Python Console" order="10" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -299,9 +262,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="11" selection-start-line="11" selection-end-line="11" />
-          <folding>
-            <element signature="e#1247#1268#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -337,9 +297,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="11" selection-start-line="11" selection-end-line="11" />
-          <folding>
-            <element signature="e#1247#1268#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -364,9 +321,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="11" selection-start-line="11" selection-end-line="11" />
-          <folding>
-            <element signature="e#1247#1268#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -381,9 +335,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="11" selection-start-line="11" selection-end-line="11" />
-          <folding>
-            <element signature="e#1247#1268#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -564,13 +515,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Batch.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="48" selection-start-line="48" selection-end-line="48" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Helpers.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -592,27 +536,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SeqAnalysis2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="28" column="38" selection-start-line="28" selection-start-column="38" selection-end-line="28" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/control.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="11" selection-start-line="11" selection-end-line="11" />
-          <folding>
-            <element signature="e#1247#1268#0" expanded="true" />
-          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SeqAnalysis2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1413">
+          <caret line="28" column="38" selection-start-line="28" selection-start-column="38" selection-end-line="28" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Batch.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="48" selection-start-line="48" selection-end-line="48" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/LenaUI.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="492" selection-start-line="492" selection-end-line="492" />
+        <state relative-caret-position="7500">
+          <caret line="512" column="36" selection-start-line="512" selection-start-column="36" selection-end-line="512" selection-end-column="36" />
         </state>
       </provider>
     </entry>

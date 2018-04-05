@@ -50,7 +50,7 @@ class LenaUI:
         root.title("LENA Contingencies")
 
         # Class Attributes
-        self.its_file_dict = {} # k:ID v:path/to/file
+        self.file_dict = {} # k:ID v:path/to/file
         self.csv_file_dict = {} # k:ID v:path/to/file
         self.input_dir = StringVar()
         self.output_dir = StringVar()
@@ -337,7 +337,7 @@ class LenaUI:
         input_dir = tkFileDialog.askdirectory()
         if input_dir:
             self.input_dir.set(input_dir)
-            self.get_files()
+            self.get_its_files()
             self.get_labels()
             for code in code_use:
                 code_use[code] = False
@@ -357,7 +357,7 @@ class LenaUI:
         tempDict = Batch(self.input_dir.get())
         for i in range(len(tempDict.items)):
             tempItem = tempDict.items.popitem()
-            self.its_file_dict.update({tempItem[0]:tempItem[1][0]})
+            self.file_dict.update({tempItem[0]:tempItem[1][0]})
     
     def get_csv_files(self):
         "This method looks and creates a dict of all .csv files found in the input directory"
@@ -491,7 +491,7 @@ class LenaUI:
         
         # retrieve .its files
         self.get_its_files()
-        if len(self.its_file_dict) < 1:
+        if len(self.file_dict) < 1:
             self.write_to_window("No .its files in input directory!")
 
             self.btm_submit_btn.configure(text="Submit", command=self.start_analysis)
@@ -510,7 +510,7 @@ class LenaUI:
         self.btm_submit_btn.configure(text="Cancel", command=self.kill_threads)
 
         # create object to send to analysis
-        data = SeqData(self.its_file_dict, self.seq_config, self.num_threads.get(), self.output_format)
+        data = SeqData(self.file_dict, self.seq_config, self.num_threads.get(), self.output_format)
         self.seq_run_results = []
 
         # kick off analysis 
