@@ -1,17 +1,18 @@
-missing module named org - imported by copy
-missing module named readline - imported by cmd, pdb
-missing module named 'org.python' - imported by pickle, xml.sax
-missing module named fcntl - imported by tempfile, subprocess
-missing module named riscosenviron - imported by os
-missing module named riscospath - imported by os
-missing module named riscos - imported by os
-missing module named ce - imported by os
-missing module named _emx_link - imported by os
-missing module named os2 - imported by os
-missing module named pwd - imported by posixpath, getpass
-missing module named posix - imported by os
-missing module named resource - imported by posix
-missing module named xlsxwriter - imported by Helpers
+missing module named resource - imported by posix, C:\Users\Joel\MTSU\CSCI_4700\LENA_Contingenciesv3\src\control.py
+missing module named posix - imported by os, C:\Users\Joel\MTSU\CSCI_4700\LENA_Contingenciesv3\src\control.py
+missing module named os2 - imported by os, C:\Users\Joel\MTSU\CSCI_4700\LENA_Contingenciesv3\src\control.py
+missing module named _emx_link - imported by os, C:\Users\Joel\MTSU\CSCI_4700\LENA_Contingenciesv3\src\control.py
+missing module named ce - imported by os, C:\Users\Joel\MTSU\CSCI_4700\LENA_Contingenciesv3\src\control.py
+missing module named riscos - imported by os, C:\Users\Joel\MTSU\CSCI_4700\LENA_Contingenciesv3\src\control.py
+missing module named riscospath - imported by os, C:\Users\Joel\MTSU\CSCI_4700\LENA_Contingenciesv3\src\control.py
+missing module named riscosenviron - imported by os, C:\Users\Joel\MTSU\CSCI_4700\LENA_Contingenciesv3\src\control.py
+missing module named org - imported by pickle, C:\Users\Joel\MTSU\CSCI_4700\LENA_Contingenciesv3\src\control.py
+missing module named fcntl - imported by tempfile, subprocess, C:\Users\Joel\MTSU\CSCI_4700\LENA_Contingenciesv3\src\control.py
+missing module named readline - imported by cmd, pdb, C:\Users\Joel\MTSU\CSCI_4700\LENA_Contingenciesv3\src\control.py
+missing module named pwd - imported by posixpath, shutil, tarfile, C:\Users\Joel\MTSU\CSCI_4700\LENA_Contingenciesv3\src\control.py, getpass
+missing module named grp - imported by shutil, tarfile, C:\Users\Joel\MTSU\CSCI_4700\LENA_Contingenciesv3\src\control.py
+missing module named _sysconfigdata - imported by distutils.sysconfig, C:\Users\Joel\MTSU\CSCI_4700\LENA_Contingenciesv3\src\control.py
+missing module named 'org.python' - imported by copy, C:\Users\Joel\MTSU\CSCI_4700\LENA_Contingenciesv3\src\control.py, xml.sax
 missing module named vms_lib - imported by platform
 missing module named 'java.lang' - imported by platform, xml.sax._exceptions
 missing module named java - imported by platform
@@ -27,5 +28,9 @@ missing module named Carbon - imported by plistlib
 missing module named MacOS - imported by platform
 missing module named macresource - imported by MacOS
 missing module named gestalt - imported by platform
+missing module named winreg.HKEY_LOCAL_MACHINE - imported by winreg, platform
+missing module named winreg.CloseKey - imported by winreg, platform
+missing module named winreg.QueryValueEx - imported by winreg, platform
+missing module named winreg.OpenKeyEx - imported by winreg, platform
 missing module named _dummy_threading - imported by dummy_threading
 missing module named ElementC14N - imported by xml.etree.ElementTree
