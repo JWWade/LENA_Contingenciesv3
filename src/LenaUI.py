@@ -20,16 +20,22 @@ import time
 import ast
 import tkMessageBox
 from Helpers import *
+import xml.etree.ElementTree as ET
+import csv
 
 MAC = 'Darwin'
 WINDOWS = 'Windows'
 AB = 'A_B'
 ABC = 'AB_C'
+ABC2 = 'A_BC'
 OK = 'ok'
 MAXTHREADS = 4
 codes = ('MAN','MAF','FAN','FAF','CHNSP','CHNNSP', \
 			'CHF','CXN','CXF','NON','NOF','OLN','OLF','TVN', \
 			'TVF','SIL')
+code_use = {'MAN':False,'MAF':False,'FAN':False,'FAF':False,'CHNSP':False,'CHNNSP':False, \
+			'CHF':False,'CXN':False,'CXF':False,'NON':False,'NOF':False,'OLN':False,'OLF':False,'TVN':False, \
+			'TVF':False,'SIL':False}
 codes_index = {'MAN':0,'MAF':1,'FAN':2,'FAF':3,'CHNSP':4,'CHNNSP':5, \
 			'CHF':6,'CXN':7,'CXF':8,'NON':9,'NOF':10,'OLN':11,'OLF':12,'TVN':13, \
 			'TVF':14,'SIL':15}
@@ -193,11 +199,57 @@ class LenaUI:
             self.var_c = templist
             print("C: "+str(self.var_c))
 
+    def get_labels(self):
+        labels = set()
+
+        #Loop through files in directory
+        for filename in self.file_dict:
+
+            #catch for .its files
+            if self.file_dict[filename].endswith('.its'):
+                tree = ET.parse(self.file_dict[filename])
+                root = tree.getroot()
+
+                #Loop through segments in file
+                for segment in root.iter('Segment'):
+                    if segment.get('spkr') != None:
+                        if segment.get('spkr') == 'CHN':
+                            if segment.get('startUtt1') != None:
+                                labels.add('CHNSP')
+                            else:
+                                labels.add('CHNNSP')
+                        else:
+                            labels.add(segment.get('spkr'))
+
+            elif self.file_dict[filename].endswith('.csv'):
+                with open(self.file_dict[filename]) as csvFile:
+                    reader = csv.DictReader(csvFile)
+                    for row in reader:
+                        if row['ID'] in codes:
+                            labels.add(row['ID'])
+                csvFile.close()
+
+            else: continue
+
+        #print labels
+        for tag in labels:
+            code_use[tag] = True;
+
+        self.setup_mid_frame()
+
+
+
+
     def setup_mid_frame(self):
         "Configure mid frame. Includes sequence type selection and variable selection(a,b,c)."
         # MID FRAME CONFIG
-        # create mid frame widgets
-        code_vars = StringVar(value=codes)
+        # create mid frame
+        used_codes = ()
+        for code in codes:
+            if code_use[code]:
+                used_codes += (code,)
+        code_vars = StringVar(value=used_codes)
+
 
         self.mid_abc_a_box = Listbox(self.mid_frame, height=16, listvariable=code_vars, selectmode=MULTIPLE, width=9, exportselection=False)
         self.mid_abc_b_box = Listbox(self.mid_frame, height=16, listvariable=code_vars, selectmode=MULTIPLE, width=9, exportselection=False)
@@ -218,6 +270,9 @@ class LenaUI:
         mid_type_label = ttk.Label(self.mid_frame, text='Type of Analysis')       
         self.mid_ab_btn = ttk.Radiobutton(self.mid_frame, text='A ---> B', variable=self.sequence_type, value=AB, command=disable_c)
         self.mid_abc_btn = ttk.Radiobutton(self.mid_frame, text='( A ---> B ) ---> C', variable=self.sequence_type, value=ABC, command=enable_c)        
+        #Added for FR-17. Changes oder of operations from (A->B)->C to A->(B->C)
+        self.mid_abc2_btn = ttk.Radiobutton(self.mid_frame, text='A ---> ( B ---> C )', variable=self.sequence_type, value=ABC2, command=enable_c)
+
         mid_filler_label = ttk.Label(self.mid_frame, text="     ")
         mid_conf_label = ttk.Label(self.mid_frame, text="Configure Analysis")
         mid_conf_abc_a_label = ttk.Label(self.mid_frame, text="A") 
@@ -237,20 +292,25 @@ class LenaUI:
         mid_type_label.grid(row=0, column=0, columnspan=4)
         self.mid_ab_btn.grid(row=1, column=0, columnspan=3, sticky = W)
         self.mid_abc_btn.grid(row=2, column=0, columnspan=3, sticky = W)
-        mid_conf_abc_a_label.grid(row=3, column=0)
-        mid_conf_abc_b_label.grid(row=3, column=1)
-        mid_conf_abc_c_label.grid(row=3, column=2)
-        self.mid_abc_a_box.grid(row=4, column=0)
-        self.mid_abc_b_box.grid(row=4, column=1)
-        self.mid_abc_c_box.grid(row=4, column=2)
+        self.mid_abc2_btn.grid(row=3, column=0, columnspan=3, sticky = W)
+        mid_conf_abc_a_label.grid(row=4, column=0)
+        mid_conf_abc_b_label.grid(row=4, column=1)
+        mid_conf_abc_c_label.grid(row=4, column=2)
+        self.mid_abc_a_box.grid(row=5, column=0)
+        self.mid_abc_b_box.grid(row=5, column=1)
+        self.mid_abc_c_box.grid(row=5, column=2)
 
-        mid_filler_label3.grid(row=5, column=0, columnspan=3)
-        mid_pause_label.grid(row=6, column=0, columnspan=4, pady=5)
-        self.mid_pause_entry.grid(row=7, column=0)
-        self.mid_pause_slider.grid(row=7, column=1, sticky=W)
-        mid_pause_dn_btn.grid(row=7, column=2, sticky=E)
-        mid_pause_up_btn.grid(row=7, column=3, sticky=W)
-        self.mid_pause_checkbox.grid(row=8, column=0, pady=4, columnspan=4)
+        mid_filler_label3.grid(row=6, column=0, columnspan=3)
+        mid_pause_label.grid(row=7, column=0, columnspan=4, pady=5)
+        self.mid_pause_entry.grid(row=8, column=0)
+        self.mid_pause_slider.grid(row=8, column=1, sticky=W)
+        mid_pause_dn_btn.grid(row=8, column=2, sticky=E)
+        mid_pause_up_btn.grid(row=8, column=3, sticky=W)
+        self.mid_pause_checkbox.grid(row=9, column=0, pady=4, columnspan=4)
+
+        #self.mid_abc_a_box.update()
+        #self.mid_abc_b_box.update()
+        #self.mid_abc_c_box.update()
 
     def setup_btm_frame(self):
         "Configure bottom frame. Inlcudes progress bar, submit/cancel button, and message window."
@@ -273,9 +333,17 @@ class LenaUI:
 
     def select_input_dir(self):
         "Updates input_dir variable. Bound to top_in_browse_btn."
+        self.file_dict.clear()
         input_dir = tkFileDialog.askdirectory()
         if input_dir:
             self.input_dir.set(input_dir)
+            self.get_files()
+            self.get_labels()
+            for code in code_use:
+                code_use[code] = False
+            #self.mid_abc_a_box.update()
+            #self.mid_abc_b_box.update()
+            #self.mid_abc_c_box.update()
 
     def select_output_dir(self):
         "Updates output_dir variable. Bound to top_out_browse_btn."
@@ -285,6 +353,7 @@ class LenaUI:
 
     def get_its_files(self):
         "This method looks creates a dict of all .its files found in the input directory"
+        # ************************************
         tempDict = Batch(self.input_dir.get())
         for i in range(len(tempDict.items)):
             tempItem = tempDict.items.popitem()
@@ -309,7 +378,7 @@ class LenaUI:
             return "Output directory not set! "
 
         # check sequence_type
-        if str(self.sequence_type.get()) not in (AB, ABC):
+        if str(self.sequence_type.get()) not in (AB, ABC, ABC2):
             return "Sequence Type not set! "
 
         # check var_a
@@ -321,7 +390,7 @@ class LenaUI:
             return "B is not set! "
 
         # check var_c
-        if (self.sequence_type.get() == ABC):
+        if (self.sequence_type.get() == ABC or self.sequence_type.get() == ABC2):
             if not self.var_c:
                 return "C is not set! "
 
@@ -424,6 +493,7 @@ class LenaUI:
         self.get_its_files()
         if len(self.its_file_dict) < 1:
             self.write_to_window("No .its files in input directory!")
+
             self.btm_submit_btn.configure(text="Submit", command=self.start_analysis)
             self.btm_submit_btn.configure(state='enable')
             self.btm_progress_bar.stop()
@@ -485,6 +555,8 @@ class LenaUI:
                 pass
             elif new_config['seqType'] == ABC:
                 pass
+            elif new_config['seqType'] == ABC2:
+                pass
             else:
                 raise Exception("seqType Invalid")
             
@@ -497,7 +569,7 @@ class LenaUI:
                 raise Exception("Invalid Var B")
 
             # check C
-            if(new_config['seqType'] == ABC):
+            if(new_config['seqType'] == ABC or new_config['seqType'] == ABC2):
                 if not any(x in codes for x in new_config['C'].split(',')):
                     raise Exception("Invalid Var C")
 
@@ -607,7 +679,7 @@ class LenaUI:
                 self.var_b.append(item)
 
             #self.mid_abc_c_box
-            if new_config['seqType'] == ABC:
+            if (new_config['seqType'] == ABC or new_config['seqType'] == ABC2):
                 var_c_list = new_config['C'].split(',')
                 for item in var_c_list:
                     self.mid_abc_c_box.select_set(codes_index[item])
@@ -676,8 +748,10 @@ class LenaUI:
         # reset the selection to nothing selected update
         self.mid_ab_btn.configure(variable=self.sequence_type)
         self.mid_abc_btn.configure(variable=self.sequence_type)
+        self.mid_abc2_btn.configure(variable=self.sequence_type)
         self.mid_ab_btn.update()
         self.mid_abc_btn.update()
+        self.mid_abc2_btn.update()
 
         # reset slider and pause_duration entry box update
         self.mid_pause_slider.configure(variable=self.pause_duration)
@@ -784,19 +858,19 @@ class LenaUI:
             self.mid_abc_c_box.update()
     
     def list_instructions(self):
-        instruction_var = "1) SAVE:  Saves all the data currently in all fields.\n"
-        instruction_var += "2) LOAD:  Loads the data last saved in all fields.\n"
-        instruction_var += "3) RESET:  Empties all fields\n"
-        instruction_var += "4) INPUT:  Browse to the directory that contains all files for analysis\n"
-        instruction_var += "5) OUTPUT:  Browse to the desired directory for the output file\n"
-        instruction_var += "6) OUTPUT FORMAT:  Select the desired format for output file\n"
-        instruction_var += "7) TYPE OF ANALYSIS:  Choose the type of analysis to be done and its variables\n"
-        instruction_var += "\tA--->B  or  (A---> B)---> C: type of analysis performed\n"
-        instruction_var += "\tA, B, C:  Drop down menus to select desired variables\n\n"
-        instruction_var += "8) PAUSE DURATION:  Use entry field, slider bar, and/or buttons to choose pause duration\n"
-        instruction_var += "\tEntry field:  enter in specific pause duration\n"
+        instruction_var = "1) SAVE:  \n\tSaves all the data currently in all fields.\n"
+        instruction_var += "2) LOAD:  \n\tLoads the data last saved in all fields.\n"
+        instruction_var += "3) RESET:  \n\tEmpties all fields\n"
+        instruction_var += "4) INPUT:  \n\tBrowse to the directory that contains all files for analysis\n"
+        instruction_var += "5) OUTPUT:  \n\tBrowse to the desired directory for the output file\n"
+        instruction_var += "6) OUTPUT FORMAT:  \n\tSelect the desired format for output file\n"
+        instruction_var += "7) TYPE OF ANALYSIS:  \n\tChoose the type of analysis to be done and its variables:\n"
+        instruction_var += "\tA--->B  or  (A---> B)---> C: type of analysis performed:\n"
+        instruction_var += "\tA, B, C:  Drop down menus to select desired variables\n"
+        instruction_var += "8) PAUSE DURATION:  \n\tUse entry field, slider bar, and/or buttons to choose pause duration\n"
+        instruction_var += "\tEntry field:  enter in specific pause duration in seconds and tenths of seconds\n"
         instruction_var += "\tSlider bar:  Click and hold to move along bar\n"
-        instruction_var += "\tButtons(<,>):  Moves slider bar by .1 in specified direction\n\n"
-        instruction_var += "9) ENABLE ROUNDING:  Select to enable rouding\n"
-        instruction_var += "10) SUBMIT:  Submits the current data in fields to the program to start analysis\n"
+        instruction_var += "\tButtons(<,>):  Moves slider bar by 0.1 seconds in specified direction\n"
+        instruction_var += "9) ENABLE ROUNDING:  \n\tSelect to enable rounding to nearest integer with tie-breaking threshold of 0.5 seconds\n"
+        instruction_var += "10) SUBMIT:  \n\tSubmits the current data in fields to the program to start analysis\n"
         return instruction_var

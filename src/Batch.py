@@ -24,6 +24,7 @@ class Batch:
 		allfiles = [fname for fname in listdir(batDir) if isfile(join(batDir,fname))]
 
 		# Store only .its files in map
+		# ***************************
 		for f in allfiles:
 			if ".its" in f:
 				#Load xml tree to get subject ID
