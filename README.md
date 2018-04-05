@@ -36,6 +36,7 @@ This project is licensed under the MIT License
 
 ## Acknowledgments
 
+
 * Program forked from https://github.com/kengbailey/LENA_Contingencies2
   and originally from https://github.com/HomeBankCode/LENA_contingencies
 * Project completed Spring Semester 2018 @ MTSU CSCI Software Engineering
