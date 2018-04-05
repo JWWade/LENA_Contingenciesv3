@@ -2,8 +2,8 @@
 
 GUI for computing contingency tables from .its and .csv files.
 
-![alt text](https://i.imgur.com/Wopaloh.png)
-** this image needs updating
+<img style="float: right;" src="./icon/LenaUI.jpg">
+
 
 ## How To Run
 1. Install latest build from builds directory
