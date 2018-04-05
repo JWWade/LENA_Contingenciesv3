@@ -227,7 +227,12 @@ class EItemList:
 		tok_d = float(self.contingencies["d"])
 
 		# OCV operant contingency value
-		OCV = (tok_a / (tok_a + tok_b)) - (tok_c / (tok_c + tok_d))
+		#OCV = (tok_a / (tok_a + tok_b)) - (tok_c / (tok_c + tok_d))
+
+		if tok_a + tok_b is 0 or tok_c + tok_d is 0:
+			OCV = "undefined"
+		else:
+			OCV = (tok_a / (tok_a + tok_b)) - (tok_c / (tok_c + tok_d))
 
 		rt += str(self.contingencies["a"]) + ',' + str(self.contingencies["b"]) + ',' + str(self.contingencies["c"]) + ',' + str(self.contingencies["d"]) + ',' + str(OCV)
 		return rt
@@ -353,6 +358,8 @@ class SeqAnalysis:
 
 				#Perform primary analysis
 				eiList.SeqAn()
+
+				print 'Made it past Sequence Analysis'
 
 				#write data and break from loop
 				elh = eiList.Header()
