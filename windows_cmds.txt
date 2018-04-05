@@ -1,6 +1,10 @@
 // HOW TO CREATE THE WINDOWS 32BIT VERSION OF LENAContingenciesV3
 // ==============================================================
 
+// be aware that some paths included in this doc may be different per 
+// your machine. i.e. python install and script locations
+// As the Dr. Dong says, "Be Careful" | "Pay Attention"
+
 // first tho, just install python on the C: drive the old school way. 
 // goto python.com or whatever and download the windows msi installer
 // or whatever. 
@@ -21,7 +25,10 @@
 // run these from the src/ directory of the project. 
 
 // build a specfile for pyinstaller!
-"C:\python27\Scripts\pyi-makespec" --onefile control.py -i=../icon/lenacon3_icon.ico --name=LENAContingenciesV3 --hidden-import=xlsxwriter
+// these wondrous command~line flags create a specfile that will build 
+// a near~flawless executable with no cmd promt window and a custom icon, 
+// as well as a single file exe for portability. 
+"C:\python27\Scripts\pyi-makespec" --onefile --windowed --noconsole control.py -i=../icon/lenacon3_icon.ico --name=LENAContingenciesV3 --hidden-import=xlsxwriter
 
 // this creates the necessary .spec file
 // that pyinstaller needs to create your beautiful win~32 executable
