@@ -26,4 +26,4 @@ exe = EXE(pyz,
           strip=False,
           upx=True,
           runtime_tmpdir=None,
-          console=True , icon='..\\icon\\lenacon3_icon.ico')
+          console=False , icon='..\\icon\\lenacon3_icon.ico')
