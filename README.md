@@ -2,7 +2,7 @@
 
 GUI for computing contingency tables from .its and .csv files.
 
-<img style="float:right;" src="./icon/LenaUI.jpg" height="300">
+<img style="float:right;" src="./icon/LenaUI.jpg" height="400">
 
 
 ## How To Run
@@ -20,7 +20,9 @@ GUI for computing contingency tables from .its and .csv files.
 ###  How To Build Program
 
 ####  Windows
-  See *windows_cmds.txt* for full instructions on setting up pyinstaller and
+  See  
+    *windows_cmds.txt*  
+  for full instructions on setting up pyinstaller and  
   using the provided spec file to update the build for future developments.
 
 ####  MacOS & Unix
@@ -37,6 +39,6 @@ This project is licensed under the MIT License
 ## Acknowledgments
 
 
-* Program forked from https://github.com/kengbailey/LENA_Contingencies2
-  and originally from https://github.com/HomeBankCode/LENA_contingencies
+* Program forked from https://github.com/kengbailey/LENA_Contingencies2  
+and originally from https://github.com/HomeBankCode/LENA_contingencies
 * Project completed Spring Semester 2018 @ MTSU CSCI Software Engineering
