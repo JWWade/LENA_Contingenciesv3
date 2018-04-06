@@ -1,3 +1,23 @@
+"""
+The MIT License (MIT)
+Copyright (c) 2018 Paul Yoder, Joshua Wade, Kenneth Bailey, Mena Sargios, Joseph Hull, Loraina Lampley, John Peden,
+Bishoy Boktor, Kate Lovett, Joel Norris, Joseph London, Jesse Offei-nkansah
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and
+to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of
+the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+IN THE SOFTWARE.
+"""
+
 import csv
 import xlsxwriter
 import datetime
@@ -40,7 +60,7 @@ class OutData:
 
 # Output to CSV format
 def output_csv(out_data):
-    "This method outputs the analysis results to a .csv file"
+    """This method outputs the analysis results to a .csv file"""
     # output code
     print("Output in .csv")
 
@@ -54,7 +74,7 @@ def output_csv(out_data):
 
 # Output to TXT format
 def ouput_txt(out_data):
-    "This method outputs the analysis results to a .txt file"
+    """This method outputs the analysis results to a .txt file"""
     # output code 
     print("Output in .txt")
 
@@ -66,7 +86,7 @@ def ouput_txt(out_data):
 
 # Output to Excel format
 def output_xlsx(out_data):
-    "This method outputs the analysis results to a .xlsx file"
+    """This method outputs the analysis results to a .xlsx file"""
     print("Output in .xlsx")
     # create workbook & add sheet
     out_file = out_data.seq_config['outputDirPath'] +'//'+ "LC2-"+out_data.batch_store+"-"+out_data.seq_config['seqType']+"-"+str(out_data.seq_config['PauseDur']).replace('.','p')+"-"+str(out_data.seq_config['roundingEnabled'])+"-"+datetime.datetime.now().strftime('%m%d%y-%H%M')+".xlsx"

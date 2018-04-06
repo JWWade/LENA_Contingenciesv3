@@ -1,12 +1,21 @@
 """
 The MIT License (MIT)
-Copyright (c) 2018 Paul Yoder, Joshua Wade, Kenneth Bailey, Mena Sargios, Joseph Hull, Loraina Lampley, John Peden, Bishoy Boktor, Kate Lovett, Joel Norris, Joseph London, Jesse Offei-nkansah
+Copyright (c) 2018 Paul Yoder, Joshua Wade, Kenneth Bailey, Mena Sargios, Joseph Hull, Loraina Lampley, John Peden,
+Bishoy Boktor, Kate Lovett, Joel Norris, Joseph London, Jesse Offei-nkansah
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and
+to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of
+the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+IN THE SOFTWARE.
 """
 
 import ttk, tkFileDialog
@@ -41,10 +50,9 @@ codes_index = {'MAN':0,'MAF':1,'FAN':2,'FAF':3,'CHNSP':4,'CHNNSP':5, \
 			'TVF':14,'SIL':15}
 
 class LenaUI:
-
-    "This class is the UI and associated actions"
+    """This class is the UI and associated actions"""
     def __init__(self, root):
-        "UI started on init of class"        
+        """UI started on init of class"""
         self.root = root
         root.resizable(False, False)
         root.title("LENA Contingencies")
@@ -105,7 +113,7 @@ class LenaUI:
             os.system('''/usr/bin/osascript -e 'tell app "Finder" to set frontmost of process "Python" to true' ''')
 
     def change_threads_window(self):
-        "Window for changing the number of threads used by SequenceAnalysis"
+        """Window for changing the number of threads used by SequenceAnalysis"""
         # setup
         t = Toplevel(self.root)
         t.resizable(False, False)
@@ -123,21 +131,21 @@ class LenaUI:
         b.grid(row=1,column=0, sticky=E, padx=15, pady=5)
 
     def change_pause_duration_up(self, event):
-        "Updates(+.01) pause duration variable. Bound to mid_pause_up_btn."
+        """"Updates(+.01) pause duration variable. Bound to mid_pause_up_btn."""
         if self.pause_duration.get() < 10.0:
             self.pause_duration.set(round(self.pause_duration.get()+0.1,1))
 
     def change_pause_duration_down(self, event):
-        "Updates(-.01) pause duration variable. Bound to mid_pause_dn_btn."
+        """"Updates(-.01) pause duration variable. Bound to mid_pause_dn_btn."""
         if self.pause_duration.get() >= 0.1:
             self.pause_duration.set(round(self.pause_duration.get()-0.1,1))
 
     def change_pause_duration_slider(self,event):
-        "Updates pause duration variable. Bound to mid_pause_slider."
+        """"Updates pause duration variable. Bound to mid_pause_slider."""
         self.pause_duration.set(round(self.pause_duration.get(),1))
 
     def setup_top_frame(self):
-        "Configure top frame. Includes save, load, reset, input, output, and output selection(txt/csv/xlsx)."
+        """"Configure top frame. Includes save, load, reset, input, output, and output selection(txt/csv/xlsx)."""
         # TOP FRAME CONFIG
         # Create top frame widgets
         self.csv_var = BooleanVar() # holds user selection for csv output
@@ -180,7 +188,7 @@ class LenaUI:
         top_save_btn.grid(row=0, column=1)
 
     def change_abc_var(self, event):
-        "Updates var_a, var_b, or var_c. Bound to mid_abc_a_box, mid_abc_b_box, and mid_abc_a_box."
+        """"Updates var_a, var_b, or var_c. Bound to mid_abc_a_box, mid_abc_b_box, and mid_abc_a_box."""
         # get user selection; id -> value
         selection = event.widget.curselection()
         templist = []
@@ -240,7 +248,7 @@ class LenaUI:
 
 
     def setup_mid_frame(self):
-        "Configure mid frame. Includes sequence type selection and variable selection(a,b,c)."
+        """"Configure mid frame. Includes sequence type selection and variable selection(a,b,c)."""
         # MID FRAME CONFIG
         # create mid frame
         used_codes = ()
@@ -312,7 +320,7 @@ class LenaUI:
         #self.mid_abc_c_box.update()
 
     def setup_btm_frame(self):
-        "Configure bottom frame. Inlcudes progress bar, submit/cancel button, and message window."
+        """"Configure bottom frame. Inlcudes progress bar, submit/cancel button, and message window."""
         # BOTTOM FRAME CONFIG
         # create bottom frame widgets
 
@@ -331,7 +339,7 @@ class LenaUI:
         self.btm_text_window.grid(row=1, column=0, columnspan=1)
 
     def select_input_dir(self):
-        "Updates input_dir variable. Bound to top_in_browse_btn."
+        """"Updates input_dir variable. Bound to top_in_browse_btn."""
         self.file_dict.clear()
         input_dir = tkFileDialog.askdirectory()
         if input_dir:
@@ -345,13 +353,13 @@ class LenaUI:
             #self.mid_abc_c_box.update()
 
     def select_output_dir(self):
-        "Updates output_dir variable. Bound to top_out_browse_btn."
+        """"Updates output_dir variable. Bound to top_out_browse_btn."""
         output_dir = tkFileDialog.askdirectory()
         if output_dir:            
             self.output_dir.set(output_dir)
 
     def get_files(self):
-        "This method looks creates a dict of all .its files found in the input directory"
+        """This method looks creates a dict of all .its files found in the input directory"""
         # ************************************
         tempDict = Batch(self.input_dir.get())
         for i in range(len(tempDict.items)):
@@ -359,7 +367,7 @@ class LenaUI:
             self.file_dict.update({tempItem[0]:tempItem[1][0]})
 
     def check_config(self):
-        "This method checks if all seq_config values are set. Returns error message if any aren't set."
+        """This method checks if all seq_config values are set. Returns error message if any aren't set."""
 
         # check input directory
         if len(str(self.top_in_path.get())) < 2:
@@ -395,7 +403,7 @@ class LenaUI:
         return OK
 
     def set_config(self):
-        "This method sets the self.seq_config variable - returns True if successful, False if unsuccessful"
+        """This method sets the self.seq_config variable - returns True if successful, False if unsuccessful"""
 
         # check if config options set
         errorVal = self.check_config()
@@ -420,7 +428,7 @@ class LenaUI:
         return True
 
     def kill_threads(self):
-        "Sends stop message to all threads and updates UI."
+        """"Sends stop message to all threads and updates UI."""
         # set stopper - threads will close
         self.stopper.set()
 
@@ -430,7 +438,7 @@ class LenaUI:
         self.btm_progress_bar.stop()
 
     def watch_status(self):
-        "This method watches for analysis finish or user cancel. Started after pressing the submit button, but not before checking+setting seq_config."
+        """"This method watches for analysis finish or user cancel. Started after pressing the submit button, but not before checking+setting seq_config."""
         while True:
             if len(self.seq_run_results) > 0:
                 # configure UI
@@ -453,7 +461,7 @@ class LenaUI:
                 break
 
     def start_analysis(self):
-        "Starts run_seqanalysis thread. run_seqanalysis needs to be run as a thread so we don't interrupt the main UI thread."
+        """Starts run_seqanalysis thread. run_seqanalysis needs to be run as a thread so we don't interrupt the main UI thread."""
         # setup
         self.stopper = threading.Event()
         self.btm_submit_btn.configure(state=DISABLED)
@@ -464,7 +472,7 @@ class LenaUI:
         t.start()
 
     def run_seqanalysis(self):
-        "This method performs the sequence analysis on all .its files"
+        """"This method performs the sequence analysis on all .its files"""
         # setup
         self.start_time = time.time()
         #self.disable_widgets()
@@ -510,7 +518,7 @@ class LenaUI:
         thread.start()
          
     def load_config(self):
-        "This method loads a config file for the program"
+        """"This method loads a config file for the program"""
         
         # file dialog - select file
         config_load_file = tkFileDialog.askopenfilename(initialdir="/", title="Select config file", filetypes=(("leco files", "*.leco"), ("all files", "*.*")))
@@ -696,7 +704,7 @@ class LenaUI:
         self.write_to_window("Successfully Loaded config file!")
 
     def reset_config(self):
-        "This method resets the all program options"
+        """This method resets the all program options"""
         # re-initialize key variables used in the UI
         self.input_dir = StringVar()
         self.output_dir = StringVar()
@@ -751,7 +759,7 @@ class LenaUI:
         self.mid_pause_entry.update()
         
     def save_config(self):
-        "This method allows the user to save the program's current configuration"
+        """This method allows the user to save the program's current configuration"""
         if self.check_config() == OK:
             self.set_config()
             config_save_file = tkFileDialog.asksaveasfile(mode='w', defaultextension=".leco")
@@ -762,16 +770,16 @@ class LenaUI:
             self.write_to_window("Unfilled configuration options!")
             
     def load_instruction_window(self):
-        "This method loads a separate window with program instructions"
+        """This method loads a separate window with program instructions"""
         instruction_var = self.list_instructions() 
         tkMessageBox.showinfo("Instructions",self.list_instructions())
 
     def close_program(self):
-        "This method closes the program"
+        """This method closes the program"""
         self.root.quit()
     
     def write_to_window(self, message):
-        "This method writes text to message box"
+        """This method writes text to message box"""
 
         # edit message text
         self.output_msg_counter += 1
@@ -786,7 +794,7 @@ class LenaUI:
         self.btm_text_window.config(state=DISABLED)
 
     def set_output_var(self):
-        "This method sets the output var based on the user's selection"
+        """This method sets the output var based on the user's selection"""
 
         if self.csv_var.get() == 1:
             if ".csv" not in self.output_format:
@@ -810,7 +818,7 @@ class LenaUI:
                 self.output_format.remove(".txt")
     
     def disable_widgets(self):
-        "This method disables top and mid widgets"
+        """This method disables top and mid widgets"""
         for child in self.top_frame.winfo_children():
             try:
                 child.configure(state=DISABLED)
@@ -823,7 +831,7 @@ class LenaUI:
                 pass
 
     def enable_widgets(self):
-        "This method enables top and mid widgets"
+        """This method enables top and mid widgets"""
         for child in self.top_frame.winfo_children():
             try:
                 child.configure(state='normal')
