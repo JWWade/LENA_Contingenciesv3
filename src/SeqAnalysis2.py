@@ -1,12 +1,21 @@
 """
 The MIT License (MIT)
-Copyright (c) 2017 Paul Yoder, Joshua Wade, Kenneth Bailey, Mena Sargios, Joseph Hull, Loraina Lampley
+Copyright (c) 2018 Paul Yoder, Joshua Wade, Kenneth Bailey, Mena Sargios, Joseph Hull, Loraina Lampley, John Peden,
+Bishoy Boktor, Kate Lovett, Joel Norris, Joseph London, Jesse Offei-nkansah
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and
+to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of
+the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+IN THE SOFTWARE.
 """
 
 import xml.etree.ElementTree as ET
@@ -30,13 +39,13 @@ class EItem:
 
 # Event Item List
 class EItemList:
-	def __init__(self, _varMap={}, pid=0, its_filename=''):
+	def __init__(self, _varMap={}, pid=0, filename=''):
 		self.list = []
 		self.list_ = []
 		self._varMap = _varMap
 		self.seqType = self._varMap["seqType"]
 		self.pid = pid
-		self.its_filename = its_filename
+		self.filename = filename
 		self.relevantSpkrs = self._varMap["A"]+','+self._varMap["B"]+','+self._varMap["C"]+',Pause'
 		self.pauseDur = float(self._varMap["PauseDur"])
 		self.eventCnt = {"A":0,"B":0,"C":0,"P":0}
@@ -144,9 +153,26 @@ class EItemList:
 				elif not(curr.spkr in self._varMap["A"] and nextB.spkr in self._varMap["B"]) and nextC.spkr not in self._varMap["C"]:
 					self.contingencies["d"] += 1
 
+		# A-->(B-->C)
+		elif self._varMap['seqType'] == 'A_BC':
+			print 'A-->(B-->C) Analysis in progress...'
+			# iterate over event items
+			for i in range(0, numItems - 2):
+				curr = self.list[i]
+				nextB = self.list[i + 1]
+				nextC = self.list[i + 2]
+				if curr.spkr in self._varMap["A"] and nextB.spkr in self._varMap["B"] and nextC.spkr in self._varMap["C"]:
+					self.contingencies["a"] += 1
+				elif curr.spkr in self._varMap["A"] and not (nextB.spkr in self._varMap["B"] and nextC.spkr in self._varMap["C"]):
+					self.contingencies["b"] += 1
+				elif curr.spkr not in self._varMap["A"] and nextB.spkr in self._varMap["B"] and nextC.spkr in self._varMap["C"]:
+					self.contingencies["c"] += 1
+				elif curr.spkr not in self._varMap["A"] and not (nextB.spkr in self._varMap["B"] and nextC.spkr in self._varMap["C"]):
+					self.contingencies["d"] += 1
+
 	def Header(self):
 		# Subject ID
-		h = 'PID,its_filename,'
+		h = 'PID,filename,'
 		
 		# Event Counts
 		for e in self.evTypes:
@@ -158,7 +184,7 @@ class EItemList:
 
 	def ResultsTuple(self):
 		# Subject ID
-		rt = self.pid + ',' + self.its_filename.split('/')[-1] + ','
+		rt = self.pid + ',' + self.filename.split('/')[-1] + ','
 
 		# Event Counts
 		for e in self.evTypes:
@@ -251,8 +277,7 @@ class SeqAnalysis:
 
 				# INITIALIZE ESSENTIAL OBJECTS
 				#Init event item list
-				eiList = EItemList(_varMap=self.varMap, pid=pID, its_filename=path)
-			
+				eiList = EItemList(_varMap=self.varMap, pid=pID, filename=path)
 
 				#Load xml tree
 				tree = ET.parse(path)
