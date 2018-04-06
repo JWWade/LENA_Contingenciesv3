@@ -20,13 +20,14 @@ GUI for computing contingency tables from .its and .csv files.
 ###  How To Build Program
 
 ####  Windows
-  See  
+  See:  
+
     *windows_cmds.txt*  
-  for full instructions on setting up pyinstaller and  
-  using the provided spec file to update the build for future developments.
+
+  in the root directory for full instructions on setting up pyinstaller and using the provided spec file to update the build for future developments.
 
 ####  MacOS & Unix
-
+  
 
 ## Documentation & Manual
 ###  Doxygen
