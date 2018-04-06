@@ -1,4 +1,4 @@
-# LENA_Contingencies v3!
+# LENA_Contingencies - Version 3
 
 GUI for computing contingency tables from .its and .csv files.
 
@@ -22,12 +22,12 @@ GUI for computing contingency tables from .its and .csv files.
 ####  Windows
   See:  
 
-    *windows_cmds.txt*  
+    windows_cmds.txt  
 
   in the root directory for full instructions on setting up pyinstaller and using the provided spec file to update the build for future developments.
 
 ####  MacOS & Unix
-  
+
 
 ## Documentation & Manual
 ###  Doxygen
