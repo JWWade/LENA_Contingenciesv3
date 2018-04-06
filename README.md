@@ -2,7 +2,7 @@
 
 GUI for computing contingency tables from .its and .csv files.
 
-<img style="float: right;" src="./icon/LenaUI.jpg" height="200">
+<img style="float:right;" src="./icon/LenaUI.jpg" height="300">
 
 
 ## How To Run
