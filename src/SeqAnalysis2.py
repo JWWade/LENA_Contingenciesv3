@@ -16,6 +16,10 @@ TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONIN
 THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
 CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 IN THE SOFTWARE.
+
+Takes the SeqData object and performs the actual logic of the sequence analysis. It generates an event item list,
+removes and adds required pauses to the item list, performs sequence analysis, generates an output string,
+calculates the ocv, and finally, logs errors.
 """
 
 import xml.etree.ElementTree as ET
@@ -28,18 +32,41 @@ import math
 
 # Event Item
 class EItem:
+	"""
+	Event Item Object class
+	"""
 	def __init__(self, attr):
+		"""
+		Initializes the event item with an xml attribute.
+		:param attr:
+		"""
 		self.spkr = attr["spkr"]
 		self.onset = attr["startTime"]
 		self.offset = attr["endTime"]
 
 	def GetFloatTime(self,arg='onset'):
+		"""
+		Takes the string time, removes excess letter, and convert to float.
+		:param arg:
+		:return float representation of time:
+		"""
 		t = self.onset[2:-1] if arg=='onset' else self.offset[2:-1]
 		return float(t)
 
 # Event Item List
 class EItemList:
+	"""
+	Event Iten List Object
+	"""
 	def __init__(self, _varMap={}, pid=0, filename=''):
+		"""
+		Initializes the Event Item List with the varmap (A, B, C, D), the pid represents the id associated with the file,
+		and the file name.
+
+		:param _varMap:
+		:param pid:
+		:param filename:
+		"""
 		self.list = []
 		self.list_ = []
 		self._varMap = _varMap
@@ -54,6 +81,15 @@ class EItemList:
 		self.round = True if "True" in self._varMap["roundingEnabled"] else False
 
 	def AddEItem(self, seg, flag=None):
+		"""
+		Adds an event item to the event item list. Completes check for CHN events.
+		Seg is a segment that is parses out of the xml tree, flag is for signaling terminal or initial segment of the
+		file.
+
+		:param seg:
+		:param flag:
+		:return:
+		"""
 		# Specify CHN events as either CHNSP or CHNNSP events
 		if 'CHN' in seg.attrib["spkr"]:
 			seg.attrib["spkr"] = self.Modify_CHN_Events(seg)
@@ -65,6 +101,11 @@ class EItemList:
 			self.list.append( EItem(seg.attrib) )
 
 	def Modify_CHN_Events(self, seg):
+		"""
+		Handles special case of CHN events, determines which one they are.
+		:param seg:
+		:return string representing the type of CHN event:
+		"""
 		CHN_mod = ''
 		if 'startUtt1' in seg.attrib:
 			CHN_mod = 'CHNSP'
@@ -73,12 +114,26 @@ class EItemList:
 		return CHN_mod
 
 	def Size(self):
+		"""
+		Returns current size of the Event item list.
+		:return the current integer length of the event item list:
+		"""
 		return len(self.list)
 
 	def GetItem(self, index):
+		"""
+		Returns the event item from the event item list at the given index.
+		:param index:
+		:return Event item from the event item list:
+		"""
 		return self.list[index]
 
 	def InsertPauses(self):
+		"""
+		Inserts pauses into the event item list.
+		Specifies the size of the ouases from the slider in the UI.
+		:return:
+		"""
 		self.list_.append(deepcopy(self.list[0]))
 		for i in range(1,self.Size()):
 			#determine whether to add pause before copying event
@@ -114,12 +169,21 @@ class EItemList:
 		self.list_ = None
 
 	def TallyItems(self):
+		"""
+		Counts up the number of each event type.
+		:return:
+		"""
 		for i in range(0, self.Size()): # iterate over Event Items
 			for e in self.evTypes:			
 				if self.list[i].spkr in self._varMap[e]:
 					self.eventCnt[e] += 1
 
 	def SeqAn(self):
+		"""
+		Primary the function for completed the logic of the given sequence analysis.
+		Checks the var map and decides which contingency to increment based on the chosen logical expression.
+		:return:
+		"""
 		numItems = self.Size()
 		# A-->B
 		if self._varMap['seqType'] == 'A_B':
@@ -171,6 +235,10 @@ class EItemList:
 					self.contingencies["d"] += 1
 
 	def Header(self):
+		"""
+		Assembles Headings string for output file.
+		:return string of headings for output:
+		"""
 		# Subject ID
 		h = 'PID,filename,'
 		
@@ -183,6 +251,12 @@ class EItemList:
 		return h
 
 	def ResultsTuple(self):
+		"""
+		For result output.
+		Concatenates the contingencies, pids, filenames, OSV, and the values for A, B, C, D from the results
+		of analysis
+		:return a tuple of results:
+		"""
 		# Subject ID
 		rt = self.pid + ',' + self.filename.split('/')[-1] + ','
 
@@ -204,7 +278,19 @@ class EItemList:
 		return rt
 	
 class SeqAnalysis:
+	"""
+	Handler class the sequence analysis class. Makes calls to complete sequence analysis.
+	"""
+
 	def __init__(self, seqData, out_results, stopper):
+		"""
+		Initializes sequence analysis object with seqData object, result output format, and stopper for signaling
+		end of sequence analysis.
+
+		:param seqData:
+		:param out_results:
+		:param stopper:
+		"""
 
 		# extract items from seqData object
 		self.varMap = seqData.seq_config
@@ -265,6 +351,15 @@ class SeqAnalysis:
 
 
 	def Perform(self, pID, path):
+		"""
+		Initiates organizing the data for analysis.
+		Looks at the files in the path, and determines course of action for .its files or .csv files to prepare the
+		xml parse tree or the data frame based on the input file type.
+		It then calls the preceding methods to complete analysis.
+		:param pID:
+		:param path:
+		:return:
+		"""
 		# retrieve work items from queue
 		if not self.stopper.is_set():
 			try:
