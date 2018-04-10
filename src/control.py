@@ -16,6 +16,8 @@ TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONIN
 THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
 CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 IN THE SOFTWARE.
+
+This file launches the Lena Contingencies application, and serves as the main entry point.
 """
 
 try:
@@ -28,6 +30,10 @@ import time
 
 
 def main():
+    """
+    Initializes the UI and begins the program.
+    :return:
+    """
     # Launch UI
     root = Tk()
     Lena = LenaUI(root)
