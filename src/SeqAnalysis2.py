@@ -79,15 +79,13 @@ class EItemList:
 		return self.list[index]
 
 	def removePauses(self, minutesToKeep):
-		print("hellooo")
+		
 		timeOfContiguousPauses = 0.0
 		unwantedPauses = []
-
-		print("85")
 		secondsToKeep = int(minutesToKeep * 60)
 
-		for item in self.list:
-			print("89")
+		for item in self.list_:
+			
 			if (item.spkr != 'Pause'):
 				timeOfContiguousPauses = 0.0
 
@@ -96,11 +94,14 @@ class EItemList:
 
 			if (timeOfContiguousPauses > secondsToKeep) and (item.spkr == 'Pause'):
 				unwantedPauses.append(item)
-		print("98")
+
+		print(len(unwantedPauses))
 		for pause in unwantedPauses:
-			print(pause.onset)
-			self.list.remove(pause)
-			print("102")
+			self.list_.remove(pause)
+			
+
+		print(len(unwantedPauses)+" pauses removed!")
+			
 
 		
 
@@ -136,9 +137,8 @@ class EItemList:
 			self.list_.append( deepcopy(self.list[i]) )
 
 		#free memory used by interim list
+		self.removePauses(1)
 		self.list = deepcopy(self.list_)
-		
-		#self.removePauses(10)
 		self.list_ = None
 
 	def TallyItems(self):
