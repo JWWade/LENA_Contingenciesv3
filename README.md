@@ -13,8 +13,8 @@ GUI for computing contingency tables from .its and .csv files.
     The application is located in  
         ./builds/v3  
 
-2. Run program from desktop shortcut
-3. Setup input directory(for batch of .its files)
+2. Run program from executable located in that folder.
+3. Setup input directory(for batch of .its or .csv files)
 4. Setup output directory
 5. Configure Analysis
 6. Press Submit!
