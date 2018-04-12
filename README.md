@@ -9,10 +9,10 @@ GUI for computing contingency tables from .its and .csv files.
 
 ### How To Run
 
-1. Download Lena Contingencies above!
+1. Download Lena Contingencies above!  
     The application is located in  
         ./builds/v3  
-        
+
 2. Run program from desktop shortcut
 3. Setup input directory(for batch of .its files)
 4. Setup output directory
