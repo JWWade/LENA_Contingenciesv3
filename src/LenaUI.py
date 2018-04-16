@@ -73,6 +73,7 @@ class LenaUI:
         self.minutes_of_pause_to_keep = DoubleVar()
         self.minutes_of_pause_to_keep.set(0.0)
         self.rounding_enabled = BooleanVar()
+        self.keep_pauses = BooleanVar()
         self.sequence_type = StringVar()
         self.var_a = []
         self.var_b = []
@@ -309,9 +310,9 @@ class LenaUI:
         code_vars = StringVar(value=used_codes)
 
 
-        self.mid_abc_a_box = Listbox(self.mid_frame, height=16, listvariable=code_vars, selectmode=MULTIPLE, width=9, exportselection=False)
-        self.mid_abc_b_box = Listbox(self.mid_frame, height=16, listvariable=code_vars, selectmode=MULTIPLE, width=9, exportselection=False)
-        self.mid_abc_c_box = Listbox(self.mid_frame, height=16, listvariable=code_vars, selectmode=MULTIPLE, width=9, exportselection=False)
+        self.mid_abc_a_box = Listbox(self.mid_frame, height=8, listvariable=code_vars, selectmode=MULTIPLE, width=9, exportselection=False)
+        self.mid_abc_b_box = Listbox(self.mid_frame, height=8, listvariable=code_vars, selectmode=MULTIPLE, width=9, exportselection=False)
+        self.mid_abc_c_box = Listbox(self.mid_frame, height=8, listvariable=code_vars, selectmode=MULTIPLE, width=9, exportselection=False)
         
         self.mid_abc_a_box.bind("<<ListboxSelect>>", self.change_abc_var)
         self.mid_abc_b_box.bind("<<ListboxSelect>>", self.change_abc_var)
@@ -345,6 +346,7 @@ class LenaUI:
         mid_pause_up_btn = ttk.Button(self.mid_frame, text=">", command=lambda: self.change_pause_duration_up(self), width=1)
         self.mid_pause_entry = ttk.Entry(self.mid_frame, textvariable=self.pause_duration, width=4)
         self.mid_pause_checkbox = ttk.Checkbutton(self.mid_frame, text="Enable rounding", variable=self.rounding_enabled,onvalue=True, offvalue=False)
+        self.mid_keep_pause_checkbox = ttk.Checkbutton(self.mid_frame, text="Keep All Pauses", variable=self.keep_pauses,onvalue=True, offvalue=False)
 
         mid_pause_to_keep_label = ttk.Label(self.mid_frame, text="Pauses To Keep")
         self.mid_pause_to_keep_slider = ttk.Scale(self.mid_frame, orient=HORIZONTAL, length=100, from_=0.0, to=10.0, variable=self.minutes_of_pause_to_keep,command=lambda r: self.change_pause_to_keep_duration_slider(self))
@@ -378,6 +380,8 @@ class LenaUI:
         self.mid_pause_to_keep_slider.grid(row=11, column=1, sticky=W)
         mid_pause_to_keep_dn_btn.grid(row=11, column=2, sticky=E)
         mid_pause_to_keep_up_btn.grid(row=11, column=3, sticky=W)
+        self.mid_keep_pause_checkbox.grid(row=12,column=0, pady=4, columnspan=4)
+
         
 
         #self.mid_abc_a_box.update()
@@ -499,6 +503,7 @@ class LenaUI:
         self.seq_config['C'] = ','.join(map(str, self.var_c))
         self.seq_config['outputContent'] = ""
         self.seq_config['roundingEnabled'] = str(self.rounding_enabled.get())
+        self.seq_config['keepAllPauses'] = str(self.keep_pauses.get())
         self.seq_config['P'] = 'Pause'
         self.seq_config['outputDirPath'] = self.top_out_path.get()
         self.seq_config['seqType'] = self.sequence_type.get()
@@ -788,10 +793,14 @@ class LenaUI:
 
             # pause duration
             self.pause_duration.set(float(new_config['PauseDur']))
+            self.minutes_of_pause_to_keep.set(float(new_config['PauseKeep']))
 
             # rounding enabled           
             if new_config['roundingEnabled'] == 'True':
                 self.rounding_enabled.set(True)
+
+            if new_config['keepAllPauses'] == 'True':
+                self.keep_pauses.set(True)
 
         except Exception as e:
             print(repr(e))
@@ -812,7 +821,9 @@ class LenaUI:
         self.output_dir = StringVar()
         self.sequence_type = StringVar()
         self.pause_duration = DoubleVar()
+        self.minutes_of_pause_to_keep = DoubleVar()
         self.pause_duration.set(0.1)
+        self.minutes_of_pause_to_keep.set(0.0)
 
         # re-initialize the A, B, & C entry boxes
         self.mid_abc_a_box.select_clear(0,END)
@@ -829,16 +840,19 @@ class LenaUI:
         self.txt_var.set(0)
         self.xl_var.set(0)
         self.rounding_enabled.set(0)
+        self.keep_pauses.set(0)
 
         # re-initialize the selections update
         self.top_csv_btn.configure(variable=self.csv_var)
         self.top_txt_btn.configure(variable=self.txt_var)
         self.top_xl_btn.configure(variable=self.xl_var)
         self.mid_pause_checkbox.configure(variable=self.rounding_enabled)
+        self.mid_keep_pause_checkbox.configure(variable=self.keep_pauses)
         self.top_csv_btn.update()
         self.top_txt_btn.update()
         self.top_xl_btn.update()
         self.mid_pause_checkbox.update()
+        self.mid_keep_pause_checkbox.update()
     
         # reset the in and out dir update
         self.top_in_path.configure(textvariable=self.input_dir)
@@ -857,8 +871,12 @@ class LenaUI:
         # reset slider and pause_duration entry box update
         self.mid_pause_slider.configure(variable=self.pause_duration)
         self.mid_pause_entry.configure(textvariable=self.pause_duration)
+        self.mid_pause_to_keep_slider.configure(variable=self.minutes_of_pause_to_keep)
+        self.mid_pause_to_keep_entry.configure(textvariable=self.minutes_of_pause_to_keep)
         self.mid_pause_slider.update()
         self.mid_pause_entry.update()
+        self.mid_pause_to_keep_entry.update()
+        self.mid_pause_to_keep_slider.update()
         
     def save_config(self):
         """

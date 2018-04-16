@@ -76,6 +76,7 @@ class EItemList:
 		self.relevantSpkrs = self._varMap["A"]+','+self._varMap["B"]+','+self._varMap["C"]+',Pause'
 		self.pauseDur = float(self._varMap["PauseDur"])
 		self.pauseKeep = float(self._varMap["PauseKeep"])
+		self.keepAllPauses = True if "True" in self._varMap["keepAllPauses"] else False
 		self.eventCnt = {"A":0,"B":0,"C":0,"P":0}
 		self.evTypes = ["A","B","C","P"]
 		self.contingencies = {"a":0, "b":0, "c":0, "d":0}
@@ -130,6 +131,12 @@ class EItemList:
 		return self.list[index]
 
 	def RemoveExtraneousPauses(self):
+		"""
+		Removes inserted contiguous pauses that are past a user specified amount of pauses to keep. 
+		For instance, if there are 11 minutes of contiguous pauses, but the user only wants to keep 10,
+		then 1 minute of pauses will be removed
+		:return:
+		"""
 		
 		timeOfContiguousPauses = 0.0
 		unwantedPauses = []
@@ -145,8 +152,6 @@ class EItemList:
 
 			if (timeOfContiguousPauses > secondsToKeep) and (item.spkr == 'Pause'):
 				unwantedPauses.append(item)
-
-		print(len(unwantedPauses))
 
 		for pause in unwantedPauses:
 			self.list.remove(pause)	
@@ -419,7 +424,8 @@ class SeqAnalysis:
 				eiList.InsertPauses()
 
 				# Remove contiguous pauses
-				eiList.RemoveExtraneousPauses()
+				if not(eiList.keepAllPauses):
+					eiList.RemoveExtraneousPauses()
 
 				#Tally each item in the EItemList
 				eiList.TallyItems()
@@ -444,4 +450,4 @@ class SeqAnalysis:
 			except Exception as e:
 				with self.tLock:
 					self.error_results.append(str(e))
-					print(self.error_results)
+					
