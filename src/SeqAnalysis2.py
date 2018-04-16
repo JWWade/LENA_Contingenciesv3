@@ -48,6 +48,7 @@ class EItemList:
 		self.filename = filename
 		self.relevantSpkrs = self._varMap["A"]+','+self._varMap["B"]+','+self._varMap["C"]+',Pause'
 		self.pauseDur = float(self._varMap["PauseDur"])
+		self.pauseKeep = float(self._varMap["PauseKeep"])
 		self.eventCnt = {"A":0,"B":0,"C":0,"P":0}
 		self.evTypes = ["A","B","C","P"]
 		self.contingencies = {"a":0, "b":0, "c":0, "d":0}
@@ -78,13 +79,13 @@ class EItemList:
 	def GetItem(self, index):
 		return self.list[index]
 
-	def removePauses(self, minutesToKeep):
+	def RemoveExtraneousPauses(self):
 		
 		timeOfContiguousPauses = 0.0
 		unwantedPauses = []
-		secondsToKeep = int(minutesToKeep * 60)
+		secondsToKeep = int(self.pauseKeep * 60)
 
-		for item in self.list_:
+		for item in self.list:
 			
 			if (item.spkr != 'Pause'):
 				timeOfContiguousPauses = 0.0
@@ -96,14 +97,9 @@ class EItemList:
 				unwantedPauses.append(item)
 
 		print(len(unwantedPauses))
+
 		for pause in unwantedPauses:
-			self.list_.remove(pause)
-			
-
-		print(len(unwantedPauses)+" pauses removed!")
-			
-
-		
+			self.list.remove(pause)	
 
 	def InsertPauses(self):
 		self.list_.append(deepcopy(self.list[0]))
@@ -137,7 +133,6 @@ class EItemList:
 			self.list_.append( deepcopy(self.list[i]) )
 
 		#free memory used by interim list
-		self.removePauses(1)
 		self.list = deepcopy(self.list_)
 		self.list_ = None
 
@@ -328,6 +323,9 @@ class SeqAnalysis:
 				#Insert contiguous pauses
 				eiList.InsertPauses()
 
+				# Remove contiguous pauses
+				eiList.RemoveExtraneousPauses()
+
 				#Tally each item in the EItemList
 				eiList.TallyItems()
 
@@ -351,3 +349,4 @@ class SeqAnalysis:
 			except Exception as e:
 				with self.tLock:
 					self.error_results.append(str(e))
+					print(self.error_results)

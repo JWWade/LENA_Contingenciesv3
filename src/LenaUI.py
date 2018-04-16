@@ -65,6 +65,8 @@ class LenaUI:
         self.seq_config = {}
         self.pause_duration = DoubleVar()
         self.pause_duration.set(0.1)
+        self.minutes_of_pause_to_keep = DoubleVar()
+        self.minutes_of_pause_to_keep.set(0.0)
         self.rounding_enabled = BooleanVar()
         self.sequence_type = StringVar()
         self.var_a = []
@@ -143,6 +145,21 @@ class LenaUI:
     def change_pause_duration_slider(self,event):
         """"Updates pause duration variable. Bound to mid_pause_slider."""
         self.pause_duration.set(round(self.pause_duration.get(),1))
+
+    ## Pause Removal
+    def change_pause_to_keep_duration_up(self, event):
+        """"Updates(+.01) pause duration variable. Bound to mid_pause_up_btn."""
+        if self.minutes_of_pause_to_keep.get() < 10.0:
+            self.minutes_of_pause_to_keep.set(round(self.minutes_of_pause_to_keep.get()+0.1,1))
+
+    def change_pause_to_keep_duration_down(self, event):
+        """"Updates(-.01) pause duration variable. Bound to mid_pause_dn_btn."""
+        if self.minutes_of_pause_to_keep.get() >= 0.0:
+            self.minutes_of_pause_to_keep.set(round(self.minutes_of_pause_to_keep.get()-0.1,1))
+
+    def change_pause_to_keep_duration_slider(self,event):
+        """"Updates pause duration variable. Bound to mid_pause_slider."""
+        self.minutes_of_pause_to_keep.set(round(self.minutes_of_pause_to_keep.get(),1))
 
     def setup_top_frame(self):
         """"Configure top frame. Includes save, load, reset, input, output, and output selection(txt/csv/xlsx)."""
@@ -295,6 +312,12 @@ class LenaUI:
         self.mid_pause_entry = ttk.Entry(self.mid_frame, textvariable=self.pause_duration, width=4)
         self.mid_pause_checkbox = ttk.Checkbutton(self.mid_frame, text="Enable rounding", variable=self.rounding_enabled,onvalue=True, offvalue=False)
 
+        mid_pause_to_keep_label = ttk.Label(self.mid_frame, text="Pauses To Keep")
+        self.mid_pause_to_keep_slider = ttk.Scale(self.mid_frame, orient=HORIZONTAL, length=100, from_=0.0, to=10.0, variable=self.minutes_of_pause_to_keep,command=lambda r: self.change_pause_to_keep_duration_slider(self))
+        mid_pause_to_keep_dn_btn = ttk.Button(self.mid_frame, text="<", command=lambda: self.change_pause_to_keep_duration_down(self), width=1)
+        mid_pause_to_keep_up_btn = ttk.Button(self.mid_frame, text=">", command=lambda: self.change_pause_to_keep_duration_up(self), width=1)
+        self.mid_pause_to_keep_entry = ttk.Entry(self.mid_frame, textvariable=self.minutes_of_pause_to_keep, width=4)
+
         # setup mid frame widgets
         mid_type_label.grid(row=0, column=0, columnspan=4)
         self.mid_ab_btn.grid(row=1, column=0, columnspan=3, sticky = W)
@@ -314,6 +337,14 @@ class LenaUI:
         mid_pause_dn_btn.grid(row=8, column=2, sticky=E)
         mid_pause_up_btn.grid(row=8, column=3, sticky=W)
         self.mid_pause_checkbox.grid(row=9, column=0, pady=4, columnspan=4)
+
+        ## Pauses to Keep feature
+        mid_pause_to_keep_label.grid(row=10, column=0, columnspan=4, pady=5)
+        self.mid_pause_to_keep_entry.grid(row=11,column=0)
+        self.mid_pause_to_keep_slider.grid(row=11, column=1, sticky=W)
+        mid_pause_to_keep_dn_btn.grid(row=11, column=2, sticky=E)
+        mid_pause_to_keep_up_btn.grid(row=11, column=3, sticky=W)
+        
 
         #self.mid_abc_a_box.update()
         #self.mid_abc_b_box.update()
@@ -422,6 +453,7 @@ class LenaUI:
         self.seq_config['outputDirPath'] = self.top_out_path.get()
         self.seq_config['seqType'] = self.sequence_type.get()
         self.seq_config['PauseDur'] = str(round(self.pause_duration.get(), 1))
+        self.seq_config['PauseKeep'] = str(round(self.minutes_of_pause_to_keep.get(), 1))
         self.seq_config['outputTypes'] = ''.join(self.output_format)
 
         self.write_to_window("Config options assembled!")
