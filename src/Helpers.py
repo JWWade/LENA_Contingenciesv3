@@ -16,6 +16,8 @@ TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONIN
 THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
 CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 IN THE SOFTWARE.
+
+Contains class definitions and methods for use in SeqAnalysis2.py.
 """
 
 import csv
@@ -25,12 +27,25 @@ import datetime
 # Sequence Analysis Data Object
 # Holds all items needed for analysis
 class SeqData:
+    """
+    The data object that is created from the type of analysis that is being completed. It is a blueprint for
+    SeqAnalysis.py to complete its analysis.
+    """
     its_dict = None
     seq_config = None
     num_threads = None
     output_format = None
 
     def __init__(self, its_dict, seq_config, num_threads, output_format):
+        """
+        Initializes the SeqData object with the dictionary of files, the sequence configuration, number of
+        threads for analysis and the format of the output.
+
+        :param its_dict:
+        :param seq_config:
+        :param num_threads:
+        :param output_format:
+        """
         self.num_threads = num_threads
         self.its_dict = its_dict
         self.seq_config = seq_config
@@ -39,28 +54,52 @@ class SeqData:
 # Sequence Analysis Run Object
 # Put into queue; used in Perform()
 class SeqRun:
+    """
+    The Run object creates an id and path for the analysis.
+    """
     p_id = None
     path = None
 
     def __init__(self, p_id, path):
+        """
+        Initializes the Run object with the path and id for analysis.
+
+        :param p_id:
+        :param path:
+        """
         self.p_id = p_id
         self.path = path
 
 # Output Object
 # sent to output functions
 class OutData:
+    """
+    Object for organizing the output of the analysis results.
+    """
     batch_store = None
     seq_config = None
     results = None
 
     def __init__(self, batch_store, seq_config, results):
+        """
+        Initializes the OutData object with the number of analyses completes, the sequence analyzed,
+        and the resulting data.
+
+        :param batch_store:
+        :param seq_config:
+        :param results:
+        """
         self.batch_store = batch_store
         self.seq_config = seq_config
         self.results = results
 
 # Output to CSV format
 def output_csv(out_data):
-    """This method outputs the analysis results to a .csv file"""
+    """
+    This method outputs the analysis results to a .csv file
+    :param out_data:
+    :return:
+    """
     # output code
     print("Output in .csv")
 
@@ -74,7 +113,11 @@ def output_csv(out_data):
 
 # Output to TXT format
 def ouput_txt(out_data):
-    """This method outputs the analysis results to a .txt file"""
+    """
+    This method outputs the analysis results to a .txt file
+    :param out_data:
+    :return:
+    """
     # output code 
     print("Output in .txt")
 
@@ -86,7 +129,11 @@ def ouput_txt(out_data):
 
 # Output to Excel format
 def output_xlsx(out_data):
-    """This method outputs the analysis results to a .xlsx file"""
+    """
+    This method outputs the analysis results to a .xlsx file
+    :param out_data:
+    :return:
+    """
     print("Output in .xlsx")
     # create workbook & add sheet
     out_file = out_data.seq_config['outputDirPath'] +'//'+ "LC2-"+out_data.batch_store+"-"+out_data.seq_config['seqType']+"-"+str(out_data.seq_config['PauseDur']).replace('.','p')+"-"+str(out_data.seq_config['roundingEnabled'])+"-"+datetime.datetime.now().strftime('%m%d%y-%H%M')+".xlsx"

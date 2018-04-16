@@ -16,6 +16,8 @@ TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONIN
 THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
 CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 IN THE SOFTWARE.
+
+The purpose of this module is to load all the files from the chosen directory and create a dictionary of file and id pairs.
 """
 
 from os import listdir
@@ -25,10 +27,20 @@ import xml.etree.ElementTree as ET
 
 class Batch:
 	def __init__(self,batDir):
+		"""
+		Initializes the loading of files from the batch directory.
+		:param batDir:
+		"""
 		self.items = {} # key:username, value:filename
 		self.LoadData(batDir)
 
 	def LoadData(self,batDir):
+		"""
+		Loads files from the chosen batch directory and sets up dictionary based on file type.
+		Currently supports .its and .csv file type for analysis.
+		:param batDir:
+		:return:
+		"""
 		# List all files in specified directory
 		allfiles = [fname for fname in listdir(batDir) if isfile(join(batDir,fname))]
 
