@@ -88,12 +88,19 @@ class EItemList:
 	def GetItem(self, index):
 		return self.list[index]
 
-	def InsertPauses(self):
+	def InsertPauses(self, CSV = None):
 		self.list_.append(deepcopy(self.list[0]))
 		for i in range(1,self.Size()):
 			#determine whether to add pause before copying event
-			curEvT = self.list[i].GetFloatTime('onset')
-			preEvT = self.list[i-1].GetFloatTime('offset')
+			#curEvT = self.list[i].GetFloatTime('onset')
+			#preEvT = self.list[i-1].GetFloatTime('offset')
+			if CSV:
+				curEvT = self.list[i].onset
+				preEvT = self.list[i - 1].offset
+			else:
+				curEvT = self.list[i].GetFloatTime('onset')
+				preEvT = self.list[i - 1].GetFloatTime('offset')
+
 			eT = curEvT - preEvT
 			P = self.pauseDur
 			if eT >= P:
@@ -246,7 +253,7 @@ class EItemList:
 		# OCV operant contingency value
 		#OCV = (tok_a / (tok_a + tok_b)) - (tok_c / (tok_c + tok_d))
 
-		if tok_a + tok_b is 0 or tok_c + tok_d is 0:
+		if (tok_a + tok_b) == 0 or (tok_c + tok_d) == 0:
 			OCV = "undefined"
 		else:
 			OCV = (tok_a / (tok_a + tok_b)) - (tok_c / (tok_c + tok_d))
@@ -348,7 +355,7 @@ class SeqAnalysis:
 					csv_arr[2] = csv_data[-1][2]
 					eiList.AddEItemCSV(csv_arr, flag='Terminal')
 
-					eiList.InsertPausesCSV()
+					eiList.InsertPauses(CSV = True)
 				else:
 					#Load xml tree
 					tree = ET.parse(path)
@@ -395,3 +402,4 @@ class SeqAnalysis:
 			except Exception as e:
 				with self.tLock:
 					self.error_results.append(str(e))
+					print(self.error_results)
