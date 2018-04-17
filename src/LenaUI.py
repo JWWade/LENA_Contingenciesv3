@@ -349,7 +349,7 @@ class LenaUI:
         self.mid_keep_pause_checkbox = ttk.Checkbutton(self.mid_frame, text="Keep All Pauses", variable=self.keep_pauses,onvalue=True, offvalue=False)
 
         mid_pause_to_keep_label = ttk.Label(self.mid_frame, text="Pauses To Keep")
-        self.mid_pause_to_keep_slider = ttk.Scale(self.mid_frame, orient=HORIZONTAL, length=100, from_=0.0, to=10.0, variable=self.minutes_of_pause_to_keep,command=lambda r: self.change_pause_to_keep_duration_slider(self))
+        self.mid_pause_to_keep_slider = ttk.Scale(self.mid_frame, orient=HORIZONTAL, length=100, from_=0, to=360, variable=self.minutes_of_pause_to_keep,command=lambda r: self.change_pause_to_keep_duration_slider(self))
         mid_pause_to_keep_dn_btn = ttk.Button(self.mid_frame, text="<", command=lambda: self.change_pause_to_keep_duration_down(self), width=1)
         mid_pause_to_keep_up_btn = ttk.Button(self.mid_frame, text=">", command=lambda: self.change_pause_to_keep_duration_up(self), width=1)
         self.mid_pause_to_keep_entry = ttk.Entry(self.mid_frame, textvariable=self.minutes_of_pause_to_keep, width=4)
