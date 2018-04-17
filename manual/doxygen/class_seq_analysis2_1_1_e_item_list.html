@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.14"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Lena Contingencies Version 3: SeqAnalysis2.EItemList Class Reference</title>
+<title>Lena Contingencies: SeqAnalysis2.EItemList Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,8 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Lena Contingencies Version 3
+   <div id="projectname">Lena Contingencies
+   &#160;<span id="projectnumber">3</span>
    </div>
   </td>
  </tr>
@@ -86,6 +87,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a486a3684f3c4f91f2402bfc77bbcab1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2f616b619ae4c0b347b13e2e4e6dff0b"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_seq_analysis2_1_1_e_item_list.html#a2f616b619ae4c0b347b13e2e4e6dff0b">GetItem</a> (self, index)</td></tr>
 <tr class="separator:a2f616b619ae4c0b347b13e2e4e6dff0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24a3724b1e777831249f0ce2646c9b45"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_seq_analysis2_1_1_e_item_list.html#a24a3724b1e777831249f0ce2646c9b45">RemoveExtraneousPauses</a> (self)</td></tr>
+<tr class="separator:a24a3724b1e777831249f0ce2646c9b45"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6d96c673077904cb7e78c83fd4bb6802"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_seq_analysis2_1_1_e_item_list.html#a6d96c673077904cb7e78c83fd4bb6802">InsertPauses</a> (self)</td></tr>
 <tr class="separator:a6d96c673077904cb7e78c83fd4bb6802"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a85c8840cb007776e3d5f4222af72519d"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_seq_analysis2_1_1_e_item_list.html#a85c8840cb007776e3d5f4222af72519d">TallyItems</a> (self)</td></tr>
@@ -120,6 +123,12 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a63c75d6db1bbaf8c711c2e892c922645"><td class="memItemLeft" align="right" valign="top"><a id="a63c75d6db1bbaf8c711c2e892c922645"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>pauseDur</b></td></tr>
 <tr class="separator:a63c75d6db1bbaf8c711c2e892c922645"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c753d31f2e7ab1764da20a87646a410"><td class="memItemLeft" align="right" valign="top"><a id="a2c753d31f2e7ab1764da20a87646a410"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>pauseKeep</b></td></tr>
+<tr class="separator:a2c753d31f2e7ab1764da20a87646a410"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd7e8bea7db6ddb9325959518572314c"><td class="memItemLeft" align="right" valign="top"><a id="afd7e8bea7db6ddb9325959518572314c"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>keepAllPauses</b></td></tr>
+<tr class="separator:afd7e8bea7db6ddb9325959518572314c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a422e7ec4947b9c5e5b21dcbdc781f68e"><td class="memItemLeft" align="right" valign="top"><a id="a422e7ec4947b9c5e5b21dcbdc781f68e"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>eventCnt</b></td></tr>
 <tr class="separator:a422e7ec4947b9c5e5b21dcbdc781f68e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -324,6 +333,28 @@ Specifies the size of the ouases from the slider in the UI.
 <pre class="fragment">Handles special case of CHN events, determines which one they are.
 :param seg:
 :return string representing the type of CHN event:
+</pre> 
+</div>
+</div>
+<a id="a24a3724b1e777831249f0ce2646c9b45"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24a3724b1e777831249f0ce2646c9b45">&#9670;&nbsp;</a></span>RemoveExtraneousPauses()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def SeqAnalysis2.EItemList.RemoveExtraneousPauses </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Removes inserted contiguous pauses that are past a user specified amount of pauses to keep. 
+For instance, if there are 11 minutes of contiguous pauses, but the user only wants to keep 10,
+then 1 minute of pauses will be removed
+:return:
 </pre> 
 </div>
 </div>
