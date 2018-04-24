@@ -294,7 +294,7 @@ class LenaUI:
 
         #print labels
         for tag in labels:
-            code_use[tag] = True;
+            code_use[tag] = True
 
         self.setup_mid_frame()
 
@@ -441,6 +441,7 @@ class LenaUI:
                 print "should be faster"
                 for tag in code_use:
                     code_use[tag] = True
+                self.setup_mid_frame()
 
             for code in code_use:
                 code_use[code] = False
@@ -845,6 +846,7 @@ class LenaUI:
         self.minutes_of_pause_to_keep = DoubleVar()
         self.pause_duration.set(0.1)
         self.minutes_of_pause_to_keep.set(0.0)
+        self.should_get_events.set(False)
 
         # re-initialize the A, B, & C entry boxes
         self.mid_abc_a_box.select_clear(0,END)
@@ -898,6 +900,7 @@ class LenaUI:
         self.mid_pause_entry.update()
         self.mid_pause_to_keep_entry.update()
         self.mid_pause_to_keep_slider.update()
+        self.get_events_check.update()
         
     def save_config(self):
         """
