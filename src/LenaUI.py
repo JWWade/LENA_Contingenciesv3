@@ -74,6 +74,7 @@ class LenaUI:
         self.minutes_of_pause_to_keep.set(0.0)
         self.rounding_enabled = BooleanVar()
         self.keep_pauses = BooleanVar()
+        self.keep_pauses.set(False)
         self.sequence_type = StringVar()
         self.var_a = []
         self.var_b = []
@@ -85,6 +86,8 @@ class LenaUI:
         self.num_threads.set(4)
         self.start_time = None
         self.seq_run_results = []
+        self.should_get_events = BooleanVar() # this is a flag to know if to get relevant event types only
+        self.should_get_events.set(False)
 
         # Create main frames
         main_frame = ttk.Frame(self.root) # top, mid, btm frames embedded within this frame
@@ -209,7 +212,7 @@ class LenaUI:
         top_out_browse_btn = ttk.Button(self.top_frame, text="Browse...", command=self.select_output_dir)   #Browse button for output directory //J
         self.top_in_path = Entry(self.top_frame, width=20, textvariable=self.input_dir, state=DISABLED)     #create the label to display input directory path //J      
         self.top_out_path = Entry(self.top_frame, width=20, textvariable=self.output_dir, state=DISABLED)   #create the label to display output directory path //J
-        
+        self.get_events_check = ttk.Checkbutton(self.top_frame, text="Selective Scanning", variable=self.should_get_events,onvalue=True, offvalue=False)
         # setup top frame widgets
         top_reset_btn.grid(row=0, column=3, sticky=E)
         top_dir_label.grid(row=1, column=0, columnspan=2, sticky=N)
@@ -227,6 +230,8 @@ class LenaUI:
         self.top_xl_btn.grid(row=6, column=2)
         top_load_btn.grid(row=0, column=2)
         top_save_btn.grid(row=0, column=1)
+        self.get_events_check.grid(row=1, column=2, columnspan=4)
+        
 
     def change_abc_var(self, event):
         """
@@ -420,7 +425,23 @@ class LenaUI:
         if input_dir:
             self.input_dir.set(input_dir)
             self.get_files()
-            self.get_labels()
+
+            # since all labels are false, 
+            #   we need to check if we should only
+            #   get relevant events.
+            #   If so, go through and make all events false
+            #       and then check for the relevant ones
+            #   other wise, just turn them all on.
+            if self.should_get_events.get():
+                print "not fast :("
+                for tag in code_use:
+                    code_use[tag] = False
+                self.get_labels()
+            else:
+                print "should be faster"
+                for tag in code_use:
+                    code_use[tag] = True
+
             for code in code_use:
                 code_use[code] = False
             #self.mid_abc_a_box.update()
